@@ -30,7 +30,7 @@ module.exports = {
         "banner-height-mobile": "10vh",
       },
       backgroundImage: {
-        'fish-overlay': "url('/blackgyalbites-nextjs/fish-overlay.png')",
+        'fish-overlay': "url('/fish-overlay.png')",
       },
       backgroundColor: {
         'caribbean-yellow': '#FFDE59'
