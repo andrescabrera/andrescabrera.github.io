@@ -1,8 +1,10 @@
-# blackgyalbites
+# andrescabrera github page
+
+### based on Blackgyalbites nextjs sample
 
 ## Template for No-touch Menus and Host Static Pages Built with Any Framework on GitHub Pages
 
-![screenshot of website with 3 buttons that read: CV menu, Personal menu, and Travel and Foods menu. on the right of it is a screenshot of the Travel and Foods menu](https://user-images.githubusercontent.com/22990146/182385358-364d812f-a5a8-48ad-9ac7-3bf9e14d9614.png)
+![screenshot of website with 3 buttons that read: CV ENG menu, CV SPA menu, and Family, Travel and Foods menu. on the right of it is a screenshot of the Family, Travel and Foods menu](https://user-images.githubusercontent.com/22990146/182385358-364d812f-a5a8-48ad-9ac7-3bf9e14d9614.png)
 
 ### Website built with Next.js and Tailwind CSS to display bio menus when users scan a QR code.
 

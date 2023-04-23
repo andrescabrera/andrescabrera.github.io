@@ -4,9 +4,9 @@ import MenuButton from "./MenuButton"
 const MenuButtons = () => {
     return (
         <section className="pt-12">
-            <MenuButton url="/blackgyalbites-nextjs/andrescabrera-eng.pdf" menu_type="CV" />
-            <MenuButton url="/blackgyalbites-nextjs/andrescabrera-spa.pdf" menu_type="Personal" />
-            <MenuButton url="/blackgyalbites-nextjs/menu-pdf-catering.pdf" menu_type="Travel and Foods" />
+            <MenuButton url="/andrescabrera.github.io/andrescabrera-eng.pdf" menu_type="CV - English" />
+            <MenuButton url="/andrescabrera.github.io/andrescabrera-spa.pdf" menu_type="CV - Spanish" />
+            <MenuButton url="/andrescabrera.github.io/personal.pdf" menu_type="Family, Travel and Foods" />
         </section>
 
     )
