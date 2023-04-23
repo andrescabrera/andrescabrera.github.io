@@ -2,23 +2,16 @@
 
 ## Template for No-touch Menus and Host Static Pages Built with Any Framework on GitHub Pages
 
-![screenshot of website with 3 buttons that read: food menu, drinks menu, and catering menu. on the right of it is a screenshot of the drinks menu](https://user-images.githubusercontent.com/22990146/182385358-364d812f-a5a8-48ad-9ac7-3bf9e14d9614.png)
+![screenshot of website with 3 buttons that read: CV menu, Personal menu, and Travel and Foods menu. on the right of it is a screenshot of the Travel and Foods menu](https://user-images.githubusercontent.com/22990146/182385358-364d812f-a5a8-48ad-9ac7-3bf9e14d9614.png)
 
-### Website built with Next.js and Tailwind CSS to display restaurant menus when users scan a QR code.
+### Website built with Next.js and Tailwind CSS to display bio menus when users scan a QR code.
 
 ## Powered By GitHub Pages
 
-This is a demonstration to show developers that they can build and host static websites using any framework. 
-See more example frameworks hosted on GitHub Pages:
-
-- [HTML and CSS](https://github.com/blackgirlbytes/blackgyalbites)
-- [Next.js and Tailwind CSS](https://github.com/blackgirlbytes/blackgyalbites-nextjs)
-- [Astro](https://github.com/blackgirlbytes/blackgyalbites-astro)
-
-Link to live site: https://blackgirlbytes.github.io/blackgyalbites-nextjs/
+Link to live site: https://andrescabrera.github.io/
 
 ### Design and Development
-All designs and elements are open source, available for free for anyone to use.
+All designs and elements are open source, available for free for anyone to use. Based on:
 
 Owned by Rizel Scarlett [(@blackgirlbytes)](https://github.com/blackgirlbytes)
 
