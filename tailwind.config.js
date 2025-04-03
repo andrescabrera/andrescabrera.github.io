@@ -13,6 +13,7 @@ module.exports = {
       },
       fontSize: {
         'heading-xl': '46px',
+        'subheading-xl': '24px',
       },
       fontFamily: {
         'body': ['Lato', 'sans-serif'],
@@ -30,7 +31,7 @@ module.exports = {
         "banner-height-mobile": "10vh",
       },
       backgroundImage: {
-        'margarita-ghibili-overlay': "url('/margarita-ghibili.png')",
+        'margarita-ghibli-overlay': "url('/margarita-ghibli.png')",
         'margarita-overlay': "url('/margarita.png')",
       },
       backgroundColor: {

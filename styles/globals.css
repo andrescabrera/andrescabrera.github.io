@@ -11,3 +11,21 @@
         }
     } 
 }
+
+
+@keyframes backgroundFade {
+  0%, 100% {
+    background-image: url('/margarita-ghibli.png');
+  }
+  50% {
+    background-image: url('/margarita.jpeg');
+  }
+}
+
+.animate-background-fade {
+  animation: backgroundFade 20s ease-in-out infinite;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+}
