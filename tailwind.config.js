@@ -31,6 +31,7 @@ module.exports = {
       },
       backgroundImage: {
         'margarita-ghibili-overlay': "url('/margarita-ghibili.png')",
+        'margarita-overlay': "url('/margarita.png')",
       },
       backgroundColor: {
         'caribbean-yellow': '#FFDE59'
