@@ -30,7 +30,7 @@ module.exports = {
         "banner-height-mobile": "10vh",
       },
       backgroundImage: {
-        'fish-overlay': "url('/fish-overlay.png')",
+        'margarita-ghibili-overlay': "url('/margarita-ghibili.png')",
       },
       backgroundColor: {
         'caribbean-yellow': '#FFDE59'
