@@ -8,7 +8,7 @@ const Header = () => {
             <h1 className="m-0 text-heading-xl text-white tracking-small header-text-shadow font-heading">Andrés Cabrera</h1>
             <br/>
             <br/>
-            <h2 className="uppercase text-subheading-xl text-lg text-white tracking-wider">Design, Create, Observe and Ship Software</h2>
+            <h2 className="uppercase text-subheading-xl text-lg text-white tracking-wider">Design, Create and Observe Software</h2>
         </header>
     )
 }
