@@ -1,31 +1,381 @@
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Lato&family=Shrikhand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-    @variants responsive {
-        .header-text-shadow {
-          text-shadow:  2px 2px rgba(252, 64, 40, 0.3);;
-        }
-    } 
+/* ============================================
+   DESIGN SYSTEM — MIDNIGHT ALTITUDE
+   ============================================ */
+:root {
+  /* Backgrounds */
+  --bg-primary:    #080C14;
+  --bg-surface:    #0F1724;
+  --bg-elevated:   #162035;
+  --bg-card:       #111827;
+
+  /* Accents */
+  --accent-primary:    #0EA5E9;
+  --accent-secondary:  #38BDF8;
+  --accent-travel:     #10B981;
+  --accent-fintech:    #8B5CF6;
+  --accent-amber:      #F59E0B;
+
+  /* Text */
+  --text-primary:  #F0F6FF;
+  --text-muted:    #8BA8C8;
+  --text-faint:    #4A6A8A;
+
+  /* Borders */
+  --border:        #1E3A5F;
+  --border-light:  #253D5F;
+
+  /* Glow */
+  --glow-primary:  rgba(14, 165, 233, 0.15);
+  --glow-travel:   rgba(16, 185, 129, 0.12);
+  --glow-fintech:  rgba(139, 92, 246, 0.12);
 }
 
+/* ============================================
+   BASE RESETS
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
-@keyframes backgroundFade {
-  0%, 100% {
-    background-image: url('/margarita-ghibli.png');
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+code, pre, .mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+/* Fade in up — for section reveals */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
   }
-  50% {
-    background-image: url('/margarita.jpeg');
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.animate-background-fade {
-  animation: backgroundFade 20s ease-in-out infinite;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: background-image 1s ease-in-out;
+/* Fade in — simple */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Hero gradient mesh animation */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating subtle pulse */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* Shimmer for skeleton / highlights */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Pulse glow ring */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 var(--glow-primary); }
+  50%       { box-shadow: 0 0 30px 10px var(--glow-primary); }
+}
+
+/* Blink cursor for terminal-style text */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Slide in from left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Timeline line grow */
+@keyframes lineGrow {
+  from { height: 0; }
+  to   { height: 100%; }
+}
+
+/* Stat counter reveal */
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Glass morphism card */
+.glass-card {
+  background: rgba(15, 23, 36, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.glass-card:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 30px var(--glow-primary);
+  transition: all 0.3s ease;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-travel) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-fintech {
+  background: linear-gradient(135deg, var(--accent-fintech) 0%, #C084FC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section reveal animation — triggered by JS */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered reveal children */
+.reveal-child {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-child.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tech badge */
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent-secondary);
+  transition: all 0.2s ease;
+}
+.tech-badge:hover {
+  background: rgba(14, 165, 233, 0.2);
+  border-color: var(--accent-primary);
+  transform: translateY(-1px);
+}
+
+.tech-badge-travel {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #34D399;
+}
+.tech-badge-travel:hover {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: var(--accent-travel);
+}
+
+.tech-badge-fintech {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.3);
+  color: #A78BFA;
+}
+.tech-badge-fintech:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: var(--accent-fintech);
+}
+
+/* Primary CTA button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, var(--accent-primary), #0284C7);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(14, 165, 233, 0.5);
+  filter: brightness(1.1);
+}
+
+/* Secondary ghost button */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.btn-secondary:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px var(--glow-primary);
+}
+
+/* Nav glass */
+.nav-glass {
+  background: rgba(8, 12, 20, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Section container */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Animated gradient background */
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    #080C14 0%,
+    #0A1628 25%,
+    #0D1B35 50%,
+    #0A1A2E 75%,
+    #080C14 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* Glow orbs for hero */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Timeline connector */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--accent-primary) 10%,
+    var(--accent-travel) 50%,
+    var(--accent-fintech) 90%,
+    transparent
+  );
+  transform: translateX(-50%);
+}
+
+/* Floating animation for profile image */
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Terminal cursor */
+.cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: var(--accent-primary);
+  margin-left: 2px;
 }
