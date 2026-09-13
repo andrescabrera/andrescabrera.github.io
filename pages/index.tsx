@@ -12,7 +12,8 @@ import FintechSection from '../src/components/FintechSection';
 import ContactSection from '../src/components/ContactSection';
 import Footer from '../src/components/Footer';
 
-const SITE_URL = 'https://andrescabrera.github.io';
+const SITE_URL = 'https://andrescabrera.com.ar';
+const OG_IMAGE = `${SITE_URL}/og-cover.jpg`;
 const TITLE = 'Andrés Cabrera — Travel Tech Engineer & Software Architect';
 const DESCRIPTION =
   'Senior Software Engineer specializing in flight aggregation platforms, GDS integrations (Amadeus, Sabre, Travelport), cloud-native microservices, and high-concurrency systems. 12M+ daily searches. Available for Travel Tech opportunities.';
@@ -50,11 +51,17 @@ const Home: NextPage = () => {
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:locale"      content="en_US" />
         <meta property="og:site_name"   content="Andrés Cabrera — Portfolio" />
+        <meta property="og:image"        content={OG_IMAGE} />
+        <meta property="og:image:width"  content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt"    content="Andrés Cabrera — Travel Tech Engineer" />
 
         {/* Twitter */}
         <meta name="twitter:card"        content="summary_large_image" />
         <meta name="twitter:title"       content={TITLE} />
         <meta name="twitter:description" content={DESCRIPTION} />
+        <meta name="twitter:image"       content={OG_IMAGE} />
+        <meta name="twitter:image:alt"   content="Andrés Cabrera — Travel Tech Engineer" />
 
         {/* SEO */}
         <meta name="author"   content="Andrés Cabrera" />

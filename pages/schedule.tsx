@@ -7,6 +7,8 @@ import Footer from '../src/components/Footer';
 
 const CALENDAR_BASE = 'https://calendar.zoho.com/eventreqForm/zz08011230911dd8aa00155d0609c809fe7c81bc79df33fe230d1f6a349c30137fa76d017394d6c39f6f82862002af3d9aa8144c51?theme=0&l=en';
 
+const SITE_URL = 'https://andrescabrera.com.ar';
+
 const Schedule: NextPage = () => {
   const [calendarUrl, setCalendarUrl] = useState<string>('');
 
@@ -22,6 +24,7 @@ const Schedule: NextPage = () => {
         <title>Schedule a Meeting — Andrés Cabrera</title>
         <meta name="description" content="Book a time to connect with Andrés Cabrera, Travel Tech Engineer. Schedule a discovery call or technical conversation." />
         <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href={`${SITE_URL}/schedule`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

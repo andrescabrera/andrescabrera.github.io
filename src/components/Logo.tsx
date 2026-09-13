@@ -8,7 +8,7 @@ const Logo = () => {
                 <div style={{ width: '100%', aspectRatio: '454 / 424' }}>
                     <Image
                         src="/vector-2.png"
-                        alt="Profile"
+                        alt="Andrés Cabrera logo"
                         width={454}
                         height={424}
                         style={{
