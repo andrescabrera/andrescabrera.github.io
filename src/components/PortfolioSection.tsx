@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const ESPORTUNITY_SHOTS = [
   { src: '/esportunity/esportunity-feed.webp', alt: 'eSportunity — community feed', label: 'Feed' },
@@ -12,10 +13,11 @@ const VENETRAVEL_SHOTS = [
   { src: '/portfolio/venetravel-hotels.webp', alt: 'Venetravel — hotels listing', label: 'Hoteles' },
 ];
 
-const Gallery: React.FC<{ shots: typeof ESPORTUNITY_SHOTS; accent: string; idPrefix: string }> = ({
+const Gallery: React.FC<{ shots: typeof ESPORTUNITY_SHOTS; accent: string; idPrefix: string; label: string }> = ({
   shots,
   accent,
   idPrefix,
+  label,
 }) => {
   const [active, setActive] = useState(0);
   return (
@@ -42,7 +44,7 @@ const Gallery: React.FC<{ shots: typeof ESPORTUNITY_SHOTS; accent: string; idPre
           </div>
         ))}
       </div>
-      <div className="flex gap-2 mt-3" role="tablist" aria-label="Project screenshots">
+      <div className="flex gap-2 mt-3" role="tablist" aria-label={label}>
         {shots.map((shot, i) => (
           <button
             key={shot.src}
@@ -74,6 +76,7 @@ const Gallery: React.FC<{ shots: typeof ESPORTUNITY_SHOTS; accent: string; idPre
 };
 
 const PortfolioSection: React.FC = () => {
+  const { t } = useLanguage();
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -96,7 +99,7 @@ const PortfolioSection: React.FC = () => {
       ref={ref}
       className="py-section relative overflow-hidden"
       style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--border)' }}
-      aria-label="Portfolio projects"
+      aria-label={t.portfolio.sectionLabel}
     >
       <div
         className="glow-orb w-[600px] h-[400px] opacity-10 pointer-events-none"
@@ -106,15 +109,15 @@ const PortfolioSection: React.FC = () => {
 
       <div className="section-container">
         <div className="text-center mb-16 reveal">
-          <span className="tech-badge mb-4 inline-block">Portfolio</span>
+          <span className="tech-badge mb-4 inline-block">{t.portfolio.badge}</span>
           <h2
             className="font-display font-bold mb-4"
             style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--text-primary)' }}
           >
-            Featured <span className="gradient-text">Projects</span>
+            {t.portfolio.titleA} <span className="gradient-text">{t.portfolio.titleB}</span>
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
-            Products I founded and built — from travel booking at scale to eSports talent matchmaking.
+            {t.portfolio.subtitle}
           </p>
         </div>
 
@@ -143,22 +146,21 @@ const PortfolioSection: React.FC = () => {
                       className="text-xs font-mono px-2 py-0.5 rounded-badge"
                       style={{ background: 'rgba(14,165,233,0.15)', color: '#38BDF8', border: '1px solid rgba(14,165,233,0.3)' }}
                     >
-                      Live
+                      {t.portfolio.venetravelLive}
                     </span>
                   </div>
-                  <p className="text-text-muted text-sm font-mono">venetravel.net · Travel booking platform</p>
+                  <p className="text-text-muted text-sm font-mono">{t.portfolio.venetravelPeriod}</p>
                 </div>
               </div>
 
               <p className="text-text-muted mb-6 leading-relaxed">
-                Booking platform for Venezuelan destinations —{' '}
-                <strong className="text-text-primary">66+ hotels, flights, tours and attractions</strong>{' '}
-                with destination autocomplete, rate quoting, suitcase (maleta) checkout and
-                guest onboarding.
+                {t.portfolio.venetravelDescA}
+                <strong className="text-text-primary">{t.portfolio.venetravelStrong}</strong>
+                {t.portfolio.venetravelDescB}
               </p>
 
               <div className="flex flex-wrap gap-2 mb-6">
-                {['Autocomplete', 'Hotels', 'Maleta Checkout', 'Marketplace'].map((tag) => (
+                {t.portfolio.venetravelTags.map((tag) => (
                   <span key={tag} className="tech-badge" style={{ fontSize: '12px' }}>{tag}</span>
                 ))}
               </div>
@@ -171,7 +173,7 @@ const PortfolioSection: React.FC = () => {
                   className="btn-primary text-sm"
                   id="portfolio-venetravel-site"
                 >
-                  Visit venetravel.net
+                  {t.portfolio.venetravelCta}
                 </a>
               </div>
             </div>
@@ -191,7 +193,7 @@ const PortfolioSection: React.FC = () => {
                   loop
                   playsInline
                   preload="metadata"
-                  aria-label="Venetravel booking journey — search, quote, suitcase and checkout"
+                  aria-label={t.portfolio.venetravelVideoLabel}
                 >
                   <source src="/portfolio/venetravel-journey.webm" type="video/webm" />
                   <source src="/portfolio/venetravel-journey.mp4" type="video/mp4" />
@@ -247,22 +249,23 @@ const PortfolioSection: React.FC = () => {
                       className="text-xs font-mono px-2 py-0.5 rounded-badge"
                       style={{ background: 'rgba(244,63,94,0.15)', color: '#FB7185', border: '1px solid rgba(244,63,94,0.3)' }}
                     >
-                      Founder
+                      {t.portfolio.esportunityFounder}
                     </span>
                   </div>
-                  <p className="text-text-muted text-sm font-mono">Apr 2023 — Apr 2025 · Founder Developer</p>
+                  <p className="text-text-muted text-sm font-mono">{t.portfolio.esportunityPeriod}</p>
                 </div>
               </div>
 
               <p className="text-text-muted mb-6 leading-relaxed">
-                A talent-matchmaking platform for competitive gaming: opportunity board with{' '}
-                <strong className="text-text-primary">150+ active listings</strong>, community feed and{' '}
-                <strong className="text-text-primary">realtime chat</strong> connecting players with
-                eSports organizations across Latin America.
+                {t.portfolio.esportunityDescA}
+                <strong className="text-text-primary">{t.portfolio.esportunityStrong}</strong>
+                {t.portfolio.esportunityDescB}
+                <strong className="text-text-primary">{t.portfolio.esportunityStrong2}</strong>
+                {t.portfolio.esportunityDescC}
               </p>
 
               <div className="flex flex-wrap gap-2 mb-6">
-                {['Realtime Chat', 'Matchmaking', 'Feed', 'BETA'].map((tag) => (
+                {t.portfolio.esportunityTags.map((tag) => (
                   <span key={tag} className="tech-badge" style={{ fontSize: '12px' }}>{tag}</span>
                 ))}
               </div>
@@ -275,7 +278,7 @@ const PortfolioSection: React.FC = () => {
                   className="btn-primary text-sm"
                   id="portfolio-esportunity-upwork"
                 >
-                  View on Upwork
+                  {t.portfolio.esportunityUpwork}
                 </a>
                 <a
                   href="https://github.com/andrescabrera-esportunity"
@@ -284,13 +287,13 @@ const PortfolioSection: React.FC = () => {
                   className="btn-secondary text-sm"
                   id="portfolio-esportunity-github"
                 >
-                  GitHub — eSportunity
+                  {t.portfolio.esportunityGithub}
                 </a>
               </div>
             </div>
 
             <div className="flex-1 w-full">
-              <Gallery shots={ESPORTUNITY_SHOTS} accent="#F43F5E" idPrefix="esportunity" />
+              <Gallery shots={ESPORTUNITY_SHOTS} accent="#F43F5E" idPrefix="esportunity" label={t.portfolio.galleryLabel} />
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const EXPERIENCES = [
   {
@@ -123,6 +124,7 @@ const DOMAIN_COLORS: Record<string, { bg: string; text: string; border: string; 
 };
 
 const ExperienceTimeline: React.FC = () => {
+  const { t } = useLanguage();
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -147,27 +149,27 @@ const ExperienceTimeline: React.FC = () => {
       id="experience"
       ref={ref}
       className="py-section"
-      aria-label="Work experience timeline"
+      aria-label={t.experience.sectionLabel}
     >
       <div className="section-container">
         {/* Section header */}
         <div className="text-center mb-16 reveal">
-          <span className="tech-badge mb-4 inline-block">Work Experience</span>
+          <span className="tech-badge mb-4 inline-block">{t.experience.badge}</span>
           <h2 className="font-display font-bold text-text-primary mb-4"
             style={{ fontSize: 'clamp(28px, 4vw, 44px)' }}
           >
-            Career Timeline
+            {t.experience.title}
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
-            12+ years building software across Travel Tech, FinTech, and platform engineering.
+            {t.experience.subtitle}
           </p>
 
           {/* Domain legend */}
           <div className="flex flex-wrap gap-3 justify-center mt-6">
-            {Object.entries(DOMAIN_COLORS).map(([key, { text, label }]) => (
+            {Object.entries(DOMAIN_COLORS).map(([key, { text }]) => (
               <span key={key} className="flex items-center gap-2 text-sm text-text-muted">
                 <span className="w-3 h-3 rounded-full inline-block" style={{ background: text }} aria-hidden="true" />
-                {label}
+                {t.experience.domains[key] ?? key}
               </span>
             ))}
           </div>
@@ -189,6 +191,7 @@ const ExperienceTimeline: React.FC = () => {
             {EXPERIENCES.map((exp, i) => {
               const domain = DOMAIN_COLORS[exp.domain];
               const isLeft = i % 2 === 0;
+              const copy = t.experience.items[exp.id] ?? { role: exp.role, period: exp.period, highlights: exp.highlights };
 
               return (
                 <div
@@ -212,24 +215,24 @@ const ExperienceTimeline: React.FC = () => {
                               className="text-xs font-mono px-2 py-0.5 rounded-badge"
                               style={{ background: domain.bg, color: domain.text, border: `1px solid ${domain.border}` }}
                             >
-                              {domain.label}
+                              {t.experience.domains[exp.domain] ?? domain.label}
                             </span>
                           </div>
                           <h3 className="font-display font-bold text-text-primary text-lg leading-tight">
-                            {exp.role}
+                            {copy.role}
                           </h3>
                           <p className="font-semibold mt-0.5" style={{ color: domain.text }}>
                             {exp.company}
                           </p>
                         </div>
                         <span className="text-text-faint text-xs font-mono whitespace-nowrap mt-1 flex-shrink-0">
-                          {exp.period}
+                          {copy.period}
                         </span>
                       </div>
 
                       {/* Highlights */}
                       <ul className="space-y-1.5 mb-4 list-none p-0">
-                        {exp.highlights.map((h, hi) => (
+                        {copy.highlights.map((h, hi) => (
                           <li key={hi} className="flex items-start gap-2 text-sm text-text-muted">
                             <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: domain.text }} aria-hidden="true" />
                             {h}

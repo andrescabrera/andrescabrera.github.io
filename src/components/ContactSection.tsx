@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const SOCIAL_LINKS = [
   {
@@ -104,6 +105,7 @@ const SOCIAL_LINKS = [
 ];
 
 const ContactSection: React.FC = () => {
+  const { t } = useLanguage();
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -129,21 +131,20 @@ const ContactSection: React.FC = () => {
       ref={ref}
       className="py-section"
       style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--border)' }}
-      aria-label="Contact information"
+      aria-label={t.contact.sectionLabel}
     >
       <div className="section-container">
         <div className="text-center mb-16 reveal">
-          <span className="tech-badge mb-4 inline-block">Get in Touch</span>
+          <span className="tech-badge mb-4 inline-block">{t.contact.badge}</span>
           <h2
             className="font-display font-bold text-text-primary mb-4"
             style={{ fontSize: 'clamp(28px, 4vw, 44px)' }}
           >
-            Let&apos;s Build Something{' '}
-            <span className="gradient-text">Together</span>
+            {t.contact.titleA}{' '}
+            <span className="gradient-text">{t.contact.titleB}</span>
           </h2>
           <p className="text-text-muted text-lg max-w-xl mx-auto">
-            Open to exciting Travel Tech or platform engineering opportunities.
-            Remote-first — based in Argentina & Venezuela.
+            {t.contact.subtitle}
           </p>
         </div>
 
@@ -210,8 +211,8 @@ const ContactSection: React.FC = () => {
                 </svg>
               </div>
               <div>
-                <p className="font-display font-semibold text-text-primary text-sm">Remote</p>
-                <p className="text-text-muted text-xs font-mono">Argentina 🇦🇷 · Venezuela 🇻🇪</p>
+                <p className="font-display font-semibold text-text-primary text-sm">{t.contact.remote}</p>
+                <p className="text-text-muted text-xs font-mono">{t.contact.location}</p>
               </div>
             </div>
 
@@ -226,8 +227,8 @@ const ContactSection: React.FC = () => {
                 <span className="w-3 h-3 rounded-full bg-accent-travel" style={{ animation: 'pulseGlow 2s ease-in-out infinite' }} aria-hidden="true" />
               </div>
               <div>
-                <p className="font-display font-semibold text-accent-travel text-sm">Available</p>
-                <p className="text-text-muted text-xs font-mono">Open to new opportunities</p>
+                <p className="font-display font-semibold text-accent-travel text-sm">{t.contact.available}</p>
+                <p className="text-text-muted text-xs font-mono">{t.contact.availability}</p>
               </div>
             </div>
 
@@ -245,7 +246,7 @@ const ContactSection: React.FC = () => {
                 <line x1="8"  y1="2" x2="8"  y2="6"/>
                 <line x1="3"  y1="10" x2="21" y2="10"/>
               </svg>
-              Schedule a Call
+              {t.contact.scheduleCall}
             </Link>
           </div>
         </div>

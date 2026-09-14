@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
+import { LanguageProvider } from '../src/i18n/LanguageContext';
 
 const GA_TRACKING_ID = 'G-248D3J3SEH';
 
@@ -42,7 +43,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           `,
         }}
       />
-      <Component {...pageProps} />
+      <LanguageProvider>
+        <Component {...pageProps} />
+      </LanguageProvider>
     </>
   );
 }

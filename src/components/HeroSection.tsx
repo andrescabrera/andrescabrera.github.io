@@ -1,25 +1,25 @@
 import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
-const ROLES = [
-  'Travel Tech Engineer',
-  'Flight Aggregation Architect',
-  'Backend Systems Specialist',
-  'Cloud Native Developer',
-];
+import { useLanguage } from '../i18n/LanguageContext';
 
 const HeroSection: React.FC = () => {
+  const { t } = useLanguage();
+  const ROLES = t.hero.roles;
   const roleRef  = useRef<HTMLSpanElement>(null);
   const roleIdx  = useRef(0);
   const charIdx  = useRef(0);
   const deleting = useRef(false);
 
-  // Typewriter effect
+  // Typewriter effect — restarts when language (roles) changes
   useEffect(() => {
     const el = roleRef.current;
     if (!el) return;
 
+    roleIdx.current = 0;
+    charIdx.current = 0;
+    deleting.current = false;
+    el.textContent = '';
     let timer: ReturnType<typeof setTimeout>;
 
     const tick = () => {
@@ -48,13 +48,13 @@ const HeroSection: React.FC = () => {
 
     timer = setTimeout(tick, 800);
     return () => clearTimeout(timer);
-  }, []);
+  }, [ROLES]);
 
   return (
     <section
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden hero-gradient"
-      aria-label="Hero section"
+      aria-label={t.hero.sectionLabel}
     >
       {/* Glow orbs */}
       <div
@@ -99,7 +99,7 @@ const HeroSection: React.FC = () => {
                   style={{ animation: 'pulseGlow 2s ease-in-out infinite' }}
                   aria-hidden="true"
                 />
-                Available for new opportunities
+                {t.hero.badge}
               </span>
             </div>
 
@@ -107,9 +107,9 @@ const HeroSection: React.FC = () => {
             <h1 className="font-display font-bold text-text-primary mb-4"
               style={{ fontSize: 'clamp(36px, 5.5vw, 64px)', lineHeight: '1.1' }}
             >
-              Architecting the Future of{' '}
+              {t.hero.titleA}{' '}
               <span className="gradient-text block sm:inline">
-                Travel Technology
+                {t.hero.titleB}
               </span>
             </h1>
 
@@ -117,26 +117,28 @@ const HeroSection: React.FC = () => {
             <p className="font-mono text-accent-sky mb-6 cursor"
               style={{ fontSize: 'clamp(16px, 2vw, 20px)' }}
             >
-              <span ref={roleRef} aria-live="polite">Travel Tech Engineer</span>
+              <span ref={roleRef} aria-live="polite">{ROLES[0]}</span>
             </p>
 
             {/* Bio */}
             <p className="text-text-muted mb-8 max-w-xl mx-auto lg:mx-0"
               style={{ fontSize: '17px', lineHeight: '1.75' }}
             >
-              Senior Software Engineer specializing in{' '}
-              <strong className="text-text-primary">flight aggregation platforms</strong>,{' '}
-              <strong className="text-text-primary">GDS integrations</strong>, and{' '}
-              <strong className="text-text-primary">cloud-native microservices</strong>.
-              Building the infrastructure that moves millions of travelers.
+              {t.hero.bio1}
+              <strong className="text-text-primary">{t.hero.bioS1}</strong>
+              {t.hero.bio2}
+              <strong className="text-text-primary">{t.hero.bioS2}</strong>
+              {t.hero.bio3}
+              <strong className="text-text-primary">{t.hero.bioS3}</strong>
+              {t.hero.bio4}
             </p>
 
             {/* Key stats inline */}
             <div className="flex flex-wrap gap-6 mb-10 justify-center lg:justify-start text-sm">
               {[
-                { val: '12M+',  label: 'Daily Searches', color: 'var(--accent-sky)' },
-                { val: '10+',   label: 'Microservices',  color: 'var(--accent-travel)' },
-                { val: '7+',    label: 'Provider Integrations',  color: 'var(--accent-fintech)' },
+                { val: '12M+',  label: t.hero.statLabels[0], color: 'var(--accent-sky)' },
+                { val: '10+',   label: t.hero.statLabels[1],  color: 'var(--accent-travel)' },
+                { val: '7+',    label: t.hero.statLabels[2],  color: 'var(--accent-fintech)' },
               ].map(({ val, label, color }) => (
                 <div key={label} className="flex items-center gap-2">
                   <span className="font-display font-bold text-xl" style={{ color }}>{val}</span>
@@ -186,7 +188,7 @@ const HeroSection: React.FC = () => {
                   <line x1="8"  y1="2" x2="8"  y2="6"/>
                   <line x1="3"  y1="10" x2="21" y2="10"/>
                 </svg>
-                Meet Me
+                {t.hero.meetMe}
               </Link>
             </div>
           </div>
@@ -221,7 +223,7 @@ const HeroSection: React.FC = () => {
               >
                 <Image
                   src="/foto-andres.jpg"
-                  alt="Andrés Cabrera — Software Engineer"
+                  alt={t.hero.photoAlt}
                   width={360}
                   height={360}
                   priority
@@ -254,7 +256,7 @@ const HeroSection: React.FC = () => {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-50 animate-bounce"
         aria-hidden="true"
       >
-        <span className="text-text-faint text-xs font-mono">scroll</span>
+        <span className="text-text-faint text-xs font-mono">{t.hero.scroll}</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-text-faint">
           <polyline points="6 9 12 15 18 9"/>
         </svg>

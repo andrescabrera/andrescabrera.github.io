@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const FINTECH_HIGHLIGHTS = [
   {
@@ -36,6 +37,7 @@ const FINTECH_HIGHLIGHTS = [
 ];
 
 const FintechSection: React.FC = () => {
+  const { t } = useLanguage();
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -61,7 +63,7 @@ const FintechSection: React.FC = () => {
       ref={ref}
       className="py-section relative overflow-hidden"
       style={{ background: 'var(--bg-primary)' }}
-      aria-label="FinTech experience"
+      aria-label={t.fintech.sectionLabel}
     >
       {/* Background glow */}
       <div
@@ -78,18 +80,16 @@ const FintechSection: React.FC = () => {
         {/* Header */}
         <div className="flex flex-col lg:flex-row items-start gap-8 mb-16">
           <div className="flex-1 reveal">
-            <span className="tech-badge tech-badge-fintech mb-4 inline-block">Foundation</span>
+            <span className="tech-badge tech-badge-fintech mb-4 inline-block">{t.fintech.badge}</span>
             <h2
               className="font-display font-bold mb-4"
               style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--text-primary)' }}
             >
-              FinTech{' '}
-              <span className="gradient-text-fintech">Pedigree</span>
+              {t.fintech.titleA}{' '}
+              <span className="gradient-text-fintech">{t.fintech.titleB}</span>
             </h2>
             <p className="text-text-muted text-lg leading-relaxed max-w-2xl">
-              Before focusing on Travel Tech, I spent 3+ years building the financial
-              infrastructure of LATAM&apos;s largest super-app. This gives me a unique edge:
-              the discipline and rigour of high-stakes transactional systems.
+              {t.fintech.intro}
             </p>
           </div>
 
@@ -98,13 +98,13 @@ const FintechSection: React.FC = () => {
             className="glass-card p-6 w-full lg:w-72 flex-shrink-0 reveal"
             style={{ borderColor: 'rgba(139,92,246,0.3)', background: 'rgba(139,92,246,0.04)' }}
           >
-            <p className="font-mono text-xs text-text-faint uppercase tracking-widest mb-4">FinTech Track Record</p>
+            <p className="font-mono text-xs text-text-faint uppercase tracking-widest mb-4">{t.fintech.trackRecord}</p>
             <div className="space-y-4">
               {[
-                { label: 'Years in FinTech',      val: '3+',    color: 'var(--accent-fintech)' },
-                { label: 'Transactions/day',       val: 'M+',    color: '#A78BFA' },
-                { label: 'Countries covered',      val: '5+',    color: '#C084FC', note: 'MX · CO · AR · ES + more' },
-                { label: 'Protocols mastered',     val: 'ISO8583', color: 'var(--accent-fintech)', note: 'Card networks' },
+                { label: t.fintech.metrics[0].label,      val: t.fintech.metrics[0].val,    color: 'var(--accent-fintech)' },
+                { label: t.fintech.metrics[1].label,       val: t.fintech.metrics[1].val,    color: '#A78BFA' },
+                { label: t.fintech.metrics[2].label,      val: t.fintech.metrics[2].val,    color: '#C084FC', note: t.fintech.metrics[2].note },
+                { label: t.fintech.metrics[3].label,     val: t.fintech.metrics[3].val, color: 'var(--accent-fintech)', note: t.fintech.metrics[3].note },
               ].map(({ label, val, color, note }) => (
                 <div key={label}>
                   <div className="flex justify-between items-center">
@@ -135,13 +135,16 @@ const FintechSection: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-display font-bold text-text-primary text-xl">Rappi · RappiPay</h3>
-                <p className="text-text-faint text-xs font-mono">Nov 2020 – Apr 2023 · Developer & TL</p>
+                <p className="text-text-faint text-xs font-mono">{t.fintech.rappiPeriod}</p>
               </div>
             </div>
             <p className="text-text-muted text-sm leading-relaxed mb-4">
-              Payments infrastructure for one of LATAM&apos;s most valued unicorns. Led two critical
-              teams: <strong className="text-text-primary">RappiPay Authorizer</strong> (card processing, anti-fraud)
-              and <strong className="text-text-primary">RappiPay Movements</strong> (wallet core re-architecture).
+              {t.fintech.rappiDescA}
+              {t.fintech.rappiDescB}
+              <strong className="text-text-primary">{t.fintech.rappiStrong1}</strong>
+              {t.fintech.rappiMid}
+              <strong className="text-text-primary">{t.fintech.rappiStrong2}</strong>
+              {t.fintech.rappiDescC}
             </p>
             <div className="flex flex-wrap gap-2">
               {['Kotlin', 'Kafka', 'gRPC', 'ISO8583', 'k8s', 'AWS', 'Postgres', 'MongoDB'].map((t) => (
@@ -165,13 +168,11 @@ const FintechSection: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-display font-bold text-text-primary text-xl">Fintech Banking Startup</h3>
-                <p className="text-text-faint text-xs font-mono">Mar 2020 – Nov 2020 · Software Developer</p>
+                <p className="text-text-faint text-xs font-mono">{t.fintech.wenancePeriod}</p>
               </div>
             </div>
             <p className="text-text-muted text-sm leading-relaxed mb-4">
-              Designed the financial disbursement architecture for a digital lending platform.
-              Reactive programming with Project Reactor; banking integrations with STP (MX) and Instantor (ES);
-              core banking via Mambu.
+              {t.fintech.wenanceDesc}
             </p>
             <div className="flex flex-wrap gap-2">
               {['Java 11', 'Project Reactor', 'Mambu', 'AWS SQS', 'Postgres', 'STP'].map((t) => (
@@ -196,8 +197,8 @@ const FintechSection: React.FC = () => {
               <div className="flex items-start gap-3">
                 <span className="text-2xl flex-shrink-0 mt-0.5" aria-hidden="true">{item.icon}</span>
                 <div>
-                  <h4 className="font-display font-semibold text-text-primary text-base mb-1">{item.title}</h4>
-                  <p className="text-text-muted text-sm leading-relaxed mb-3">{item.description}</p>
+                  <h4 className="font-display font-semibold text-text-primary text-base mb-1">{t.fintech.highlights[item.id]?.title ?? item.title}</h4>
+                  <p className="text-text-muted text-sm leading-relaxed mb-3">{t.fintech.highlights[item.id]?.description ?? item.description}</p>
                   <div className="flex flex-wrap gap-1.5">
                     {item.tags.map((tag) => (
                       <span

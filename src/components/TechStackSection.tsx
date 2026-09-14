@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const STACK_GROUPS = [
   {
@@ -115,6 +116,7 @@ const STACK_GROUPS = [
 ];
 
 const TechStackSection: React.FC = () => {
+  const { t } = useLanguage();
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -140,20 +142,20 @@ const TechStackSection: React.FC = () => {
       ref={ref}
       className="py-section"
       style={{ background: 'var(--bg-surface)' }}
-      aria-label="Technology stack"
+      aria-label={t.stack.sectionLabel}
     >
       <div className="section-container">
         {/* Header */}
         <div className="text-center mb-16 reveal">
-          <span className="tech-badge mb-4 inline-block">Technical Arsenal</span>
+          <span className="tech-badge mb-4 inline-block">{t.stack.badge}</span>
           <h2
             className="font-display font-bold text-text-primary mb-4"
             style={{ fontSize: 'clamp(28px, 4vw, 44px)' }}
           >
-            Tech Stack
+            {t.stack.title}
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
-            Full-spectrum platform engineering — from API design to cloud infrastructure.
+            {t.stack.subtitle}
           </p>
           <div className="flex flex-wrap justify-center gap-2 mt-6">
             <a
@@ -168,7 +170,7 @@ const TechStackSection: React.FC = () => {
                 <polyline points="15 3 21 3 21 9"/>
                 <line x1="10" y1="14" x2="21" y2="3"/>
               </svg>
-              Full Roadmap
+              {t.stack.roadmap}
             </a>
             <a
               href="https://app.pluralsight.com/profile/andres-cabrera"
@@ -181,7 +183,7 @@ const TechStackSection: React.FC = () => {
                 <circle cx="12" cy="8" r="7"/>
                 <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
               </svg>
-              Pluralsight Skill IQ
+              {t.stack.skillIq}
             </a>
           </div>
         </div>
@@ -212,13 +214,13 @@ const TechStackSection: React.FC = () => {
                   className="font-display font-bold text-base"
                   style={{ color: group.color }}
                 >
-                  {group.category}
+                  {t.stack.groups[group.id]?.category ?? group.category}
                 </h3>
               </div>
 
               {/* Items */}
               <ul className="space-y-2.5 list-none p-0">
-                {group.items.map((item) => (
+                {group.items.map((item, ii) => (
                   <li key={item.name} className="flex items-start gap-2">
                     <span
                       className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
@@ -228,7 +230,7 @@ const TechStackSection: React.FC = () => {
                     <div>
                       <span className="font-mono text-sm font-medium text-text-primary">{item.name}</span>
                       {item.desc && (
-                        <span className="text-text-faint text-xs ml-2">· {item.desc}</span>
+                        <span className="text-text-faint text-xs ml-2">· {t.stack.groups[group.id]?.descs[ii] ?? item.desc}</span>
                       )}
                     </div>
                   </li>

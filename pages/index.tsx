@@ -51,6 +51,7 @@ const Home: NextPage = () => {
         <meta property="og:title"       content={TITLE} />
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:locale"      content="en_US" />
+        <meta property="og:locale:alternate" content="es_AR" />
         <meta property="og:site_name"   content="Andrés Cabrera — Portfolio" />
         <meta property="og:image"        content={OG_IMAGE} />
         <meta property="og:image:width"  content="1200" />

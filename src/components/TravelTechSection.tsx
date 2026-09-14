@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const TRAVEL_STACK = ['Kotlin', 'Scala', 'Java', 'GDS APIs', 'NDC/IATA', 'Kafka', 'Docker', 'k8s'];
 
@@ -16,6 +17,7 @@ const LCC_PROVIDERS = [
 ];
 
 const TravelTechSection: React.FC = () => {
+  const { t } = useLanguage();
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -41,7 +43,7 @@ const TravelTechSection: React.FC = () => {
       ref={ref}
       className="py-section relative overflow-hidden"
       style={{ background: 'var(--bg-primary)' }}
-      aria-label="Travel Technology specialization"
+      aria-label={t.travel.sectionLabel}
     >
       {/* Background glow */}
       <div
@@ -53,17 +55,16 @@ const TravelTechSection: React.FC = () => {
       <div className="section-container">
         {/* Section header */}
         <div className="text-center mb-16 reveal">
-          <span className="tech-badge tech-badge-travel mb-4 inline-block">Primary Specialization</span>
+          <span className="tech-badge tech-badge-travel mb-4 inline-block">{t.travel.badge}</span>
           <h2
             className="font-display font-bold mb-4"
             style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--text-primary)' }}
           >
-            Travel Technology{' '}
-            <span className="gradient-text">Architecture</span>
+            {t.travel.titleA}{' '}
+            <span className="gradient-text">{t.travel.titleB}</span>
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
-            Building the backend infrastructure that powers modern flight search — from
-            raw GDS data to real-time aggregation at massive scale.
+            {t.travel.intro}
           </p>
         </div>
 
@@ -96,24 +97,23 @@ const TravelTechSection: React.FC = () => {
                       Current
                     </span>
                   </div>
-                  <p className="text-text-muted text-sm font-mono">Apr 2025 — Present · Software Developer</p>
+                  <p className="text-text-muted text-sm font-mono">{t.travel.starlingsPeriod}</p>
                 </div>
               </div>
 
               <p className="text-text-muted mb-6 leading-relaxed">
-                A flight aggregation platform processing{' '}
-                <strong className="text-accent-travel">12 million+ daily searches</strong>.
-                My role: scale the aggregation layer, integrate new carriers and distribution systems,
-                and migrate the infrastructure to a containerized microservices architecture.
+                {t.travel.starlingsDescA}
+                <strong className="text-accent-travel">{t.travel.starlingsStrong}</strong>
+                {t.travel.starlingsDescB}
               </p>
 
               {/* Key achievements */}
               <ul className="space-y-3 mb-6 list-none p-0">
                 {[
-                  { icon: '🚀', text: 'Scaled platform throughput to 12M+ flight searches/day via caching and batch optimizations' },
-                  { icon: '🔌', text: 'Integrated Global Distribution Systems (Amadeus, Sabre, Travelport) and Low-Cost Carriers' },
-                  { icon: '📦', text: 'Led containerization initiative — migrated legacy infrastructure to Docker/k8s microservices' },
-                  { icon: '🌐', text: 'Connected LCC connectors: Volaris, AirEuropa, Turkish Airlines, TravelFusion aggregator' },
+                  { icon: '🚀', text: t.travel.achievements[0] },
+                  { icon: '🔌', text: t.travel.achievements[1] },
+                  { icon: '📦', text: t.travel.achievements[2] },
+                  { icon: '🌐', text: t.travel.achievements[3] },
                 ].map(({ icon, text }) => (
                   <li key={text} className="flex items-start gap-3 text-sm">
                     <span className="text-lg mt-0.5 flex-shrink-0" aria-hidden="true">{icon}</span>
@@ -136,13 +136,13 @@ const TravelTechSection: React.FC = () => {
                 style={{ background: 'var(--bg-elevated)', border: '1px solid var(--border)' }}
               >
                 <p className="text-text-faint text-xs font-mono uppercase tracking-widest mb-4 text-center">
-                  Integration Ecosystem
+                  {t.travel.ecosystem}
                 </p>
 
                 {/* GDS providers */}
                 <div className="mb-4">
                   <p className="text-text-muted text-xs font-mono mb-2 flex items-center gap-1">
-                    <span aria-hidden="true">⬡</span> Global Distribution Systems
+                    <span aria-hidden="true">⬡</span> {t.travel.gds}
                   </p>
                   <div className="grid grid-cols-2 gap-2">
                     {GDS_PROVIDERS.map(({ name, icon }) => (
@@ -175,8 +175,8 @@ const TravelTechSection: React.FC = () => {
                     border: '1px solid rgba(16,185,129,0.4)',
                   }}
                 >
-                  <p className="text-accent-travel text-xs font-mono font-bold">✈ Flight Aggregator Core</p>
-                  <p className="text-text-faint text-xs font-mono mt-1">Kotlin · Kafka · 12M req/day</p>
+                  <p className="text-accent-travel text-xs font-mono font-bold">{t.travel.aggregatorCore}</p>
+                  <p className="text-text-faint text-xs font-mono mt-1">{t.travel.aggregatorSub}</p>
                 </div>
 
                 {/* Arrow down */}
@@ -192,7 +192,7 @@ const TravelTechSection: React.FC = () => {
                 {/* LCC providers */}
                 <div>
                   <p className="text-text-muted text-xs font-mono mb-2 flex items-center gap-1">
-                    <span aria-hidden="true">⬡</span> Low-Cost Carriers
+                    <span aria-hidden="true">⬡</span> {t.travel.lcc}
                   </p>
                   <div className="grid grid-cols-1 gap-2">
                     {LCC_PROVIDERS.map(({ name, flag }) => (
@@ -228,13 +228,11 @@ const TravelTechSection: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-display font-semibold text-text-primary text-lg">Despegar.com</h3>
-                <p className="text-text-faint text-xs font-mono">Oct 2018 – Mar 2020 · Scala Developer</p>
+                <p className="text-text-faint text-xs font-mono">{t.travel.despegarPeriod}</p>
               </div>
             </div>
             <p className="text-text-muted text-sm mb-3 leading-relaxed">
-              Post-selling flight exchanges on Latin America&apos;s largest OTA unicorn.
-              Integrated with Sabre, Travelport & Amadeus. Built fare arbitrage logic
-              for revenue optimization.
+              {t.travel.despegarDesc}
             </p>
             <div className="flex flex-wrap gap-2">
               {['Scala', 'Finatra', 'Akka', 'Sabre', 'Amadeus', 'Travelport'].map((t) => (
@@ -258,12 +256,11 @@ const TravelTechSection: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-display font-semibold text-text-primary text-lg">Avantrip.com</h3>
-                <p className="text-text-faint text-xs font-mono">Jan 2018 – Oct 2018 · Full Stack Java</p>
+                <p className="text-text-faint text-xs font-mono">{t.travel.avantripPeriod}</p>
               </div>
             </div>
             <p className="text-text-muted text-sm mb-3 leading-relaxed">
-              Travel back-office platform supporting multiple business alliances.
-              New billing interface against SAP Travel One via Spring Cloud Stream.
+              {t.travel.avantripDesc}
             </p>
             <div className="flex flex-wrap gap-2">
               {['Java', 'Spring', 'Angular 6', 'Kafka', 'SAP Travel One'].map((t) => (

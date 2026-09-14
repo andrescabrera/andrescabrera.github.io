@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
+import { useLanguage } from '../i18n/LanguageContext';
 
 const Footer: React.FC = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -26,18 +28,18 @@ const Footer: React.FC = () => {
             </span>
             <div>
               <p className="font-display font-semibold text-text-primary text-sm">Andrés Cabrera</p>
-              <p className="font-mono text-text-faint text-xs">Travel Tech Engineer</p>
+              <p className="font-mono text-text-faint text-xs">{t.footer.tagline}</p>
             </div>
           </div>
 
           {/* Center: quick links */}
-          <nav aria-label="Footer navigation">
+          <nav aria-label={t.footer.navLabel}>
             <ul className="flex items-center gap-6 list-none p-0 m-0">
               {[
                 { label: 'CV (EN)', href: '/andrescabrera-eng.pdf' },
                 { label: 'CV (ES)', href: '/andrescabrera-spa.pdf' },
                 { label: 'LinkedIn', href: 'https://www.linkedin.com/in/andrescabrera24/' },
-                { label: 'Schedule', href: '/schedule' },
+                { label: t.footer.schedule, href: '/schedule' },
               ].map(({ label, href }) => (
                 <li key={label}>
                   <Link

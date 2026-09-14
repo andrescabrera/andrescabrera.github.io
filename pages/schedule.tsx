@@ -4,13 +4,21 @@ import React, { useEffect, useState } from 'react';
 
 import NavBar from '../src/components/NavBar';
 import Footer from '../src/components/Footer';
+import { useLanguage } from '../src/i18n/LanguageContext';
 
 const CALENDAR_BASE = 'https://calendar.zoho.com/eventreqForm/zz08011230911dd8aa00155d0609c809fe7c81bc79df33fe230d1f6a349c30137fa76d017394d6c39f6f82862002af3d9aa8144c51?theme=0&l=en';
 
 const SITE_URL = 'https://andrescabrera.com.ar';
 
 const Schedule: NextPage = () => {
+  const { lang, t } = useLanguage();
   const [calendarUrl, setCalendarUrl] = useState<string>('');
+
+  useEffect(() => {
+    document.title = t.schedule.metaTitle;
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute('content', t.schedule.metaDescription);
+  }, [lang, t]);
 
   useEffect(() => {
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -52,35 +60,34 @@ const Schedule: NextPage = () => {
               aria-hidden="true"
             />
             <div className="section-container relative">
-              <span className="tech-badge mb-4 inline-block">Let&apos;s connect</span>
+              <span className="tech-badge mb-4 inline-block">{t.schedule.badge}</span>
               <h1
                 className="font-display font-bold text-text-primary mb-4"
                 style={{ fontSize: 'clamp(28px, 4vw, 44px)' }}
               >
-                Schedule a{' '}
-                <span className="gradient-text">Meeting</span>
+                {t.schedule.titleA}{' '}
+                <span className="gradient-text">{t.schedule.titleB}</span>
               </h1>
               <p className="text-text-muted text-lg max-w-xl mx-auto">
-                Pick a time that works for you. Whether it&apos;s a technical deep-dive,
-                a discovery call, or just a quick introduction — I&apos;m happy to connect.
+                {t.schedule.intro}
               </p>
 
               {/* Quick info cards */}
               <div className="flex flex-wrap justify-center gap-4 mt-8">
                 {[
-                  { icon: '🌍', label: 'Remote-first', sub: 'Argentina · Venezuela' },
-                  { icon: '🕐', label: 'ART / VET', sub: 'UTC-3 / UTC-4' },
-                  { icon: '✈', label: 'Travel Tech focus', sub: 'GDS · NDC · Aggregation' },
-                ].map(({ icon, label, sub }) => (
+                  { icon: '🌍', key: 0 },
+                  { icon: '🕐', key: 1 },
+                  { icon: '✈', key: 2 },
+                ].map(({ icon, key }) => (
                   <div
-                    key={label}
+                    key={key}
                     className="glass-card px-5 py-3 flex items-center gap-3"
                     style={{ borderRadius: '12px' }}
                   >
                     <span className="text-xl" aria-hidden="true">{icon}</span>
                     <div className="text-left">
-                      <p className="font-display font-semibold text-text-primary text-sm">{label}</p>
-                      <p className="font-mono text-text-faint text-xs">{sub}</p>
+                      <p className="font-display font-semibold text-text-primary text-sm">{t.schedule.cards[key].label}</p>
+                      <p className="font-mono text-text-faint text-xs">{t.schedule.cards[key].sub}</p>
                     </div>
                   </div>
                 ))}
@@ -97,7 +104,7 @@ const Schedule: NextPage = () => {
               {calendarUrl ? (
                 <iframe
                   src={calendarUrl}
-                  title="Schedule Appointment with Andrés Cabrera"
+                  title={t.schedule.calendarTitle}
                   frameBorder="0"
                   scrolling="auto"
                   height="640px"
@@ -108,7 +115,7 @@ const Schedule: NextPage = () => {
                     background: 'transparent',
                     minHeight: '640px',
                   }}
-                  aria-label="Appointment scheduling calendar"
+                  aria-label={t.schedule.calendarLabel}
                 />
               ) : (
                 <div className="flex items-center justify-center h-64">
@@ -116,9 +123,9 @@ const Schedule: NextPage = () => {
                     <div
                       className="w-8 h-8 rounded-full border-2 border-accent-sky border-t-transparent"
                       style={{ animation: 'spin 0.8s linear infinite' }}
-                      aria-label="Loading calendar..."
+                      aria-label={t.schedule.loadingCalendar}
                     />
-                    <p className="text-text-muted text-sm font-mono">Loading calendar…</p>
+                    <p className="text-text-muted text-sm font-mono">{t.schedule.loadingCalendar}</p>
                   </div>
                 </div>
               )}
@@ -127,7 +134,7 @@ const Schedule: NextPage = () => {
             {/* Alternative contact */}
             <div className="mt-8 text-center">
               <p className="text-text-muted text-sm">
-                Prefer to reach out directly?{' '}
+                {t.schedule.altContact}{' '}
                 <a
                   href="mailto:info@andrescabrera.com.ar"
                   className="text-accent-sky hover:text-accent-sky-lt transition-colors no-underline font-medium"

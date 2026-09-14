@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 interface Stat {
   value: number;
@@ -120,6 +121,7 @@ const StatCard: React.FC<{ stat: Stat; active: boolean; delay: number }> = ({ st
 };
 
 const StatsBar: React.FC = () => {
+  const { t } = useLanguage();
   const ref    = useRef<HTMLElement>(null);
   const [active, setActive] = useState(false);
 
@@ -143,14 +145,19 @@ const StatsBar: React.FC = () => {
       ref={ref}
       className="py-section-sm"
       style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}
-      aria-label="Impact statistics"
+      aria-label={t.stats.sectionLabel}
     >
       <div className="section-container">
         <div
           className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ${active ? '' : ''}`}
         >
           {STATS.map((stat, i) => (
-            <StatCard key={stat.label} stat={stat} active={active} delay={i * 100} />
+            <StatCard
+              key={stat.label}
+              stat={{ ...stat, label: t.stats.items[i].label, description: t.stats.items[i].description }}
+              active={active}
+              delay={i * 100}
+            />
           ))}
         </div>
       </div>
