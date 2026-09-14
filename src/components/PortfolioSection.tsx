@@ -226,11 +226,12 @@ const PortfolioSection: React.FC = () => {
               <p className="text-text-muted mb-6 leading-relaxed">
                 Booking platform for Venezuelan destinations —{' '}
                 <strong className="text-text-primary">66+ hotels, flights, tours and attractions</strong>{' '}
-                with agency onboarding, freelancer registry and 24/7 support.
+                with destination autocomplete, rate quoting, suitcase (maleta) checkout and
+                guest onboarding.
               </p>
 
               <div className="flex flex-wrap gap-2 mb-6">
-                {['Hotels', 'Flights', 'Tours', 'Marketplace'].map((tag) => (
+                {['Autocomplete', 'Hotels', 'Maleta Checkout', 'Marketplace'].map((tag) => (
                   <span key={tag} className="tech-badge" style={{ fontSize: '12px' }}>{tag}</span>
                 ))}
               </div>
@@ -256,17 +257,17 @@ const PortfolioSection: React.FC = () => {
                 <video
                   className="w-full h-full"
                   style={{ objectFit: 'cover', objectPosition: 'center top' }}
-                  src="/portfolio/venetravel-loop.mp4"
+                  src="/portfolio/venetravel-journey.mp4"
                   poster="/portfolio/venetravel-home.webp"
                   autoPlay
                   muted
                   loop
                   playsInline
                   preload="metadata"
-                  aria-label="Venetravel site walkthrough video"
+                  aria-label="Venetravel booking journey — search, quote, suitcase and checkout"
                 >
-                  <source src="/portfolio/venetravel-loop.webm" type="video/webm" />
-                  <source src="/portfolio/venetravel-loop.mp4" type="video/mp4" />
+                  <source src="/portfolio/venetravel-journey.webm" type="video/webm" />
+                  <source src="/portfolio/venetravel-journey.mp4" type="video/mp4" />
                 </video>
               </div>
               <div className="flex gap-2 mt-3">
