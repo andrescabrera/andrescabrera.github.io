@@ -114,86 +114,13 @@ const PortfolioSection: React.FC = () => {
             Featured <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
-            Products I founded and built — from eSports talent matchmaking to travel booking at scale.
+            Products I founded and built — from travel booking at scale to eSports talent matchmaking.
           </p>
-        </div>
-
-        {/* eSportunity */}
-        <div
-          className="glass-card p-8 lg:p-12 mb-12 reveal"
-          style={{
-            borderColor: 'rgba(244,63,94,0.3)',
-            background: 'linear-gradient(135deg, rgba(244,63,94,0.05) 0%, rgba(15,23,36,0.8) 100%)',
-          }}
-        >
-          <div className="flex flex-col lg:flex-row gap-10 items-start">
-            <div className="flex-1">
-              <div className="flex items-center gap-3 mb-4">
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
-                  style={{ background: 'rgba(244,63,94,0.15)', border: '1px solid rgba(244,63,94,0.3)' }}
-                  aria-hidden="true"
-                >
-                  🎮
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="font-display font-bold text-text-primary text-2xl">eSportunity</h3>
-                    <span
-                      className="text-xs font-mono px-2 py-0.5 rounded-badge"
-                      style={{ background: 'rgba(244,63,94,0.15)', color: '#FB7185', border: '1px solid rgba(244,63,94,0.3)' }}
-                    >
-                      Founder
-                    </span>
-                  </div>
-                  <p className="text-text-muted text-sm font-mono">Apr 2023 — Apr 2025 · Founder Developer</p>
-                </div>
-              </div>
-
-              <p className="text-text-muted mb-6 leading-relaxed">
-                A talent-matchmaking platform for competitive gaming: opportunity board with{' '}
-                <strong className="text-text-primary">150+ active listings</strong>, community feed and{' '}
-                <strong className="text-text-primary">realtime chat</strong> connecting players with
-                eSports organizations across Latin America.
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-6">
-                {['Realtime Chat', 'Matchmaking', 'Feed', 'BETA'].map((tag) => (
-                  <span key={tag} className="tech-badge" style={{ fontSize: '12px' }}>{tag}</span>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="https://www.upwork.com/freelancers/~0142a6acf7665542e5?p=1907834074140811264"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary text-sm"
-                  id="portfolio-esportunity-upwork"
-                >
-                  View on Upwork
-                </a>
-                <a
-                  href="https://github.com/andrescabrera-esportunity"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary text-sm"
-                  id="portfolio-esportunity-github"
-                >
-                  GitHub — eSportunity
-                </a>
-              </div>
-            </div>
-
-            <div className="flex-1 w-full">
-              <Gallery shots={ESPORTUNITY_SHOTS} accent="#F43F5E" idPrefix="esportunity" />
-            </div>
-          </div>
         </div>
 
         {/* Venetravel */}
         <div
-          className="glass-card p-8 lg:p-12 reveal"
+          className="glass-card p-8 lg:p-12 mb-12 reveal"
           style={{
             borderColor: 'rgba(14,165,233,0.3)',
             background: 'linear-gradient(135deg, rgba(14,165,233,0.05) 0%, rgba(15,23,36,0.8) 100%)',
@@ -291,6 +218,79 @@ const PortfolioSection: React.FC = () => {
                   </a>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* eSportunity */}
+        <div
+          className="glass-card p-8 lg:p-12 reveal"
+          style={{
+            borderColor: 'rgba(244,63,94,0.3)',
+            background: 'linear-gradient(135deg, rgba(244,63,94,0.05) 0%, rgba(15,23,36,0.8) 100%)',
+          }}
+        >
+          <div className="flex flex-col lg:flex-row gap-10 items-start">
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
+                  style={{ background: 'rgba(244,63,94,0.15)', border: '1px solid rgba(244,63,94,0.3)' }}
+                  aria-hidden="true"
+                >
+                  🎮
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h3 className="font-display font-bold text-text-primary text-2xl">eSportunity</h3>
+                    <span
+                      className="text-xs font-mono px-2 py-0.5 rounded-badge"
+                      style={{ background: 'rgba(244,63,94,0.15)', color: '#FB7185', border: '1px solid rgba(244,63,94,0.3)' }}
+                    >
+                      Founder
+                    </span>
+                  </div>
+                  <p className="text-text-muted text-sm font-mono">Apr 2023 — Apr 2025 · Founder Developer</p>
+                </div>
+              </div>
+
+              <p className="text-text-muted mb-6 leading-relaxed">
+                A talent-matchmaking platform for competitive gaming: opportunity board with{' '}
+                <strong className="text-text-primary">150+ active listings</strong>, community feed and{' '}
+                <strong className="text-text-primary">realtime chat</strong> connecting players with
+                eSports organizations across Latin America.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {['Realtime Chat', 'Matchmaking', 'Feed', 'BETA'].map((tag) => (
+                  <span key={tag} className="tech-badge" style={{ fontSize: '12px' }}>{tag}</span>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="https://www.upwork.com/freelancers/~0142a6acf7665542e5?p=1907834074140811264"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary text-sm"
+                  id="portfolio-esportunity-upwork"
+                >
+                  View on Upwork
+                </a>
+                <a
+                  href="https://github.com/andrescabrera-esportunity"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary text-sm"
+                  id="portfolio-esportunity-github"
+                >
+                  GitHub — eSportunity
+                </a>
+              </div>
+            </div>
+
+            <div className="flex-1 w-full">
+              <Gallery shots={ESPORTUNITY_SHOTS} accent="#F43F5E" idPrefix="esportunity" />
             </div>
           </div>
         </div>
