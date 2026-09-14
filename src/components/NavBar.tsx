@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+const SITE_URL = 'https://andrescabrera.com.ar';
+
 const NAV_LINKS = [
-  { label: 'About',      href: '/#hero' },
-  { label: 'Travel Tech', href: '/#travel-tech' },
-  { label: 'Stack',      href: '/#stack' },
-  { label: 'Experience', href: '/#experience' },
-  { label: 'Portfolio',  href: '/#portfolio' },
-  { label: 'FinTech',   href: '/#fintech' },
-  { label: 'Contact',   href: '/#contact' },
+  { label: 'About',      href: `${SITE_URL}/#hero` },
+  { label: 'Travel Tech', href: `${SITE_URL}/#travel-tech` },
+  { label: 'Stack',      href: `${SITE_URL}/#stack` },
+  { label: 'Experience', href: `${SITE_URL}/#experience` },
+  { label: 'Portfolio',  href: `${SITE_URL}/#portfolio` },
+  { label: 'FinTech',   href: `${SITE_URL}/#fintech` },
+  { label: 'Contact',   href: `${SITE_URL}/#contact` },
 ];
 
 const NavBar: React.FC = () => {
@@ -36,7 +38,7 @@ const NavBar: React.FC = () => {
     
     // If we are already on the home page, handle smooth scroll manually
     if (router.pathname === '/') {
-      const hash = href.replace('/', '');
+      const hash = href.includes('#') ? `#${href.split('#')[1]}` : href;
       const target = document.querySelector(hash);
       if (target) {
         e.preventDefault();
@@ -60,8 +62,8 @@ const NavBar: React.FC = () => {
       <div className="section-container flex items-center justify-between">
         {/* Logo */}
         <Link
-          href="/#hero"
-          onClick={(e) => handleNavClick(e, '/#hero')}
+          href={`${SITE_URL}/#hero`}
+          onClick={(e) => handleNavClick(e, `${SITE_URL}/#hero`)}
           className="flex items-center gap-3 no-underline group"
           aria-label="Andrés Cabrera — Home"
         >
