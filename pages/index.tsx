@@ -8,6 +8,7 @@ import StatsBar from '../src/components/StatsBar';
 import TravelTechSection from '../src/components/TravelTechSection';
 import TechStackSection from '../src/components/TechStackSection';
 import ExperienceTimeline from '../src/components/ExperienceTimeline';
+import PortfolioSection from '../src/components/PortfolioSection';
 import FintechSection from '../src/components/FintechSection';
 import ContactSection from '../src/components/ContactSection';
 import Footer from '../src/components/Footer';
@@ -104,6 +105,7 @@ const Home: NextPage = () => {
           <TravelTechSection />
           <TechStackSection />
           <ExperienceTimeline />
+          <PortfolioSection />
           <FintechSection />
           <ContactSection />
         </main>

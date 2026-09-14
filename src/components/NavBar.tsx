@@ -7,6 +7,7 @@ const NAV_LINKS = [
   { label: 'Travel Tech', href: '/#travel-tech' },
   { label: 'Stack',      href: '/#stack' },
   { label: 'Experience', href: '/#experience' },
+  { label: 'Portfolio',  href: '/#portfolio' },
   { label: 'FinTech',   href: '/#fintech' },
   { label: 'Contact',   href: '/#contact' },
 ];
