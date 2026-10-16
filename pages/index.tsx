@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import NavBar from '../src/components/NavBar';
 import HeroSection from '../src/components/HeroSection';
@@ -9,34 +9,19 @@ import TravelTechSection from '../src/components/TravelTechSection';
 import TechStackSection from '../src/components/TechStackSection';
 import ExperienceTimeline from '../src/components/ExperienceTimeline';
 import PortfolioSection from '../src/components/PortfolioSection';
+import AISection from '../src/components/AISection';
 import FintechSection from '../src/components/FintechSection';
 import ContactSection from '../src/components/ContactSection';
 import Footer from '../src/components/Footer';
+import { profile } from '../src/content/profile';
+import { en } from '../src/i18n/dictionaries';
 
-const SITE_URL = 'https://andrescabrera.com.ar';
+const SITE_URL = profile.basics.website;
 const OG_IMAGE = `${SITE_URL}/og-cover.jpg`;
-const TITLE = 'Andrés Cabrera — Travel Tech Engineer & Software Architect';
-const DESCRIPTION =
-  'Senior Software Engineer specializing in flight aggregation platforms, GDS integrations (Amadeus, Sabre, Travelport), cloud-native microservices, and high-concurrency systems. 12M+ daily searches. Available for Travel Tech opportunities.';
+const TITLE = en.meta.title;
+const DESCRIPTION = en.meta.description;
 
 const Home: NextPage = () => {
-  // Global scroll reveal observer for any components that didn't set their own
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-    );
-
-    document.querySelectorAll('.reveal, .reveal-child').forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <>
       <Head>
@@ -56,18 +41,18 @@ const Home: NextPage = () => {
         <meta property="og:image"        content={OG_IMAGE} />
         <meta property="og:image:width"  content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt"    content="Andrés Cabrera — Travel Tech Engineer" />
+        <meta property="og:image:alt"    content="Andrés Cabrera — Backend, Architecture & Product Modernization" />
 
         {/* Twitter */}
         <meta name="twitter:card"        content="summary_large_image" />
         <meta name="twitter:title"       content={TITLE} />
         <meta name="twitter:description" content={DESCRIPTION} />
         <meta name="twitter:image"       content={OG_IMAGE} />
-        <meta name="twitter:image:alt"   content="Andrés Cabrera — Travel Tech Engineer" />
+        <meta name="twitter:image:alt"   content="Andrés Cabrera — Backend, Architecture & Product Modernization" />
 
         {/* SEO */}
         <meta name="author"   content="Andrés Cabrera" />
-        <meta name="keywords" content="Travel Tech, GDS integration, Amadeus, Sabre, Travelport, flight aggregation, Kotlin, Scala, Java, microservices, Kafka, AWS, NDC IATA, RappiPay, FinTech, software engineer, backend developer" />
+        <meta name="keywords" content={`Travel Tech, GDS integration, flight aggregation, Kotlin, Scala, Java, Kafka, AWS, FinTech, backend engineering, Agentic Coding, fine-tuning, local inference, MoE, ${[...profile.ai.groups, ...profile.ai.localModels].flatMap((group) => group.items).join(', ')}`} />
         <meta name="robots"  content="index, follow" />
         <link rel="canonical" href={SITE_URL} />
         <link rel="icon"      href="/favicon.ico" />
@@ -81,17 +66,22 @@ const Home: NextPage = () => {
               '@type': 'Person',
               name: 'Andrés Cabrera',
               url: SITE_URL,
-              jobTitle: 'Software Engineer — Travel Tech',
+              jobTitle: profile.basics.title.en,
               description: DESCRIPTION,
-              email: 'info@andrescabrera.com.ar',
+              email: profile.basics.email,
               sameAs: [
-                'https://www.linkedin.com/in/andrescabrera24/',
+                profile.basics.linkedin,
+                profile.basics.github,
                 'https://app.pluralsight.com/profile/andres-cabrera',
               ],
               knowsAbout: [
                 'GDS Integration', 'Flight Aggregation', 'Kotlin', 'Scala', 'Java',
                 'Apache Kafka', 'Kubernetes', 'AWS', 'Microservices Architecture',
                 'ISO8583', 'NDC IATA', 'FinTech', 'Reactive Programming',
+                'Agentic Coding', 'Fine-tuning', 'Model Inference',
+                ...profile.ai.groups.flatMap((group) => group.items),
+                'Local AI Models', 'Mixture of Experts', 'Dense Models',
+                ...profile.ai.localModels.flatMap((group) => group.items),
               ],
             }),
           }}
@@ -100,14 +90,15 @@ const Home: NextPage = () => {
 
       <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
         <NavBar />
-        <main id="main-content">
+        <main id="main-content" tabIndex={-1}>
           <HeroSection />
           <StatsBar />
-          <TravelTechSection />
-          <TechStackSection />
-          <ExperienceTimeline />
           <PortfolioSection />
+          <AISection />
+          <TravelTechSection />
           <FintechSection />
+          <ExperienceTimeline />
+          <TechStackSection />
           <ContactSection />
         </main>
         <Footer />

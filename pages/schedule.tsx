@@ -1,160 +1,54 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-
 import NavBar from '../src/components/NavBar';
 import Footer from '../src/components/Footer';
+import { profile } from '../src/content/profile';
 import { useLanguage } from '../src/i18n/LanguageContext';
 
-const CALENDAR_BASE = 'https://calendar.zoho.com/eventreqForm/zz08011230911dd8aa00155d0609c809fe7c81bc79df33fe230d1f6a349c30137fa76d017394d6c39f6f82862002af3d9aa8144c51?theme=0&l=en';
-
-const SITE_URL = 'https://andrescabrera.com.ar';
+const CALENDAR_BASE = 'https://calendar.zoho.com/eventreqForm/zz08011230911dd8aa00155d0609c809fe7c81bc79df33fe230d1f6a349c30137fa76d017394d6c39f6f82862002af3d9aa8144c51';
 
 const Schedule: NextPage = () => {
   const { lang, t } = useLanguage();
-  const [calendarUrl, setCalendarUrl] = useState<string>('');
-
-  useEffect(() => {
-    document.title = t.schedule.metaTitle;
-    const desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute('content', t.schedule.metaDescription);
-  }, [lang, t]);
-
-  useEffect(() => {
-    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const encodedTZ = encodeURIComponent(timeZone);
-    setCalendarUrl(`${CALENDAR_BASE}&tz=${encodedTZ}`);
-  }, []);
+  const [timeZone, setTimeZone] = useState('');
+  useEffect(() => { setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone); }, []);
+  const calendarUrl = `${CALENDAR_BASE}?theme=0&l=${lang}${timeZone ? `&tz=${encodeURIComponent(timeZone)}` : ''}`;
+  const emailBody = t.schedule.emailBody.replace(lang === 'es' ? 'Zona horaria:' : 'Time zone:', `${lang === 'es' ? 'Zona horaria:' : 'Time zone:'} ${timeZone}`);
+  const emailUrl = `mailto:${profile.basics.email}?subject=${encodeURIComponent(t.schedule.emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
     <>
       <Head>
-        <title>Schedule a Meeting — Andrés Cabrera</title>
-        <meta name="description" content="Book a time to connect with Andrés Cabrera, Travel Tech Engineer. Schedule a discovery call or technical conversation." />
+        <title>{t.schedule.metaTitle}</title>
+        <meta name="description" content={t.schedule.metaDescription} />
         <meta name="robots" content="noindex, follow" />
-        <link rel="canonical" href={`${SITE_URL}/schedule`} />
+        <link rel="canonical" href={`${profile.basics.website}/schedule`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
-        <NavBar />
-
-        <main
-          id="schedule-main"
-          style={{ paddingTop: '88px', minHeight: 'calc(100vh - 88px)' }}
-        >
-          {/* Page header */}
-          <div
-            className="py-16 text-center relative overflow-hidden"
-            style={{ background: 'var(--bg-surface)', borderBottom: '1px solid var(--border)' }}
-          >
-            {/* Glow */}
-            <div
-              className="glow-orb w-80 h-80 opacity-20 pointer-events-none"
-              style={{
-                top: '-60px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                background: 'radial-gradient(circle, rgba(14,165,233,0.5) 0%, transparent 70%)',
-              }}
-              aria-hidden="true"
-            />
-            <div className="section-container relative">
-              <span className="tech-badge mb-4 inline-block">{t.schedule.badge}</span>
-              <h1
-                className="font-display font-bold text-text-primary mb-4"
-                style={{ fontSize: 'clamp(28px, 4vw, 44px)' }}
-              >
-                {t.schedule.titleA}{' '}
-                <span className="gradient-text">{t.schedule.titleB}</span>
-              </h1>
-              <p className="text-text-muted text-lg max-w-xl mx-auto">
-                {t.schedule.intro}
-              </p>
-
-              {/* Quick info cards */}
-              <div className="flex flex-wrap justify-center gap-4 mt-8">
-                {[
-                  { icon: '🌍', key: 0 },
-                  { icon: '🕐', key: 1 },
-                  { icon: '✈', key: 2 },
-                ].map(({ icon, key }) => (
-                  <div
-                    key={key}
-                    className="glass-card px-5 py-3 flex items-center gap-3"
-                    style={{ borderRadius: '12px' }}
-                  >
-                    <span className="text-xl" aria-hidden="true">{icon}</span>
-                    <div className="text-left">
-                      <p className="font-display font-semibold text-text-primary text-sm">{t.schedule.cards[key].label}</p>
-                      <p className="font-mono text-text-faint text-xs">{t.schedule.cards[key].sub}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Calendar embed */}
-          <div className="section-container py-12">
-            <div
-              className="glass-card overflow-hidden"
-              style={{ borderRadius: '20px', minHeight: '640px' }}
-            >
-              {calendarUrl ? (
-                <iframe
-                  src={calendarUrl}
-                  title={t.schedule.calendarTitle}
-                  frameBorder="0"
-                  scrolling="auto"
-                  height="640px"
-                  width="100%"
-                  style={{
-                    display: 'block',
-                    border: 'none',
-                    background: 'transparent',
-                    minHeight: '640px',
-                  }}
-                  aria-label={t.schedule.calendarLabel}
-                />
-              ) : (
-                <div className="flex items-center justify-center h-64">
-                  <div className="flex flex-col items-center gap-3">
-                    <div
-                      className="w-8 h-8 rounded-full border-2 border-accent-sky border-t-transparent"
-                      style={{ animation: 'spin 0.8s linear infinite' }}
-                      aria-label={t.schedule.loadingCalendar}
-                    />
-                    <p className="text-text-muted text-sm font-mono">{t.schedule.loadingCalendar}</p>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Alternative contact */}
-            <div className="mt-8 text-center">
-              <p className="text-text-muted text-sm">
-                {t.schedule.altContact}{' '}
-                <a
-                  href="mailto:info@andrescabrera.com.ar"
-                  className="text-accent-sky hover:text-accent-sky-lt transition-colors no-underline font-medium"
-                  id="schedule-email-link"
-                >
-                  info@andrescabrera.com.ar
-                </a>
-              </p>
-            </div>
-          </div>
-        </main>
-
-        <Footer />
-      </div>
-
-      <style jsx>{`
-        @keyframes spin {
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
+      <NavBar />
+      <main id="main-content" tabIndex={-1} className="section-container pt-32 pb-20 min-h-screen">
+        <p className="text-accent-sky-lt text-sm font-mono mb-4">{t.schedule.badge}</p>
+        <h1 className="text-3xl sm:text-5xl max-w-3xl mb-6">{t.schedule.title}</h1>
+        <p className="text-text-muted text-lg max-w-2xl mb-4">{t.schedule.intro}</p>
+        <p className="text-text-muted text-sm mb-10">{profile.basics.location[lang]}</p>
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
+          <section className="glass-card p-6 sm:p-8">
+            <h2 className="text-xl mb-4">{t.schedule.emailTitle}</h2>
+            <p className="text-text-muted mb-6">{t.schedule.emailDescription}</p>
+            <a href={emailUrl} className="btn-primary" id="schedule-email-link">{t.schedule.emailCta}</a>
+            <p className="text-sm text-text-muted break-all mt-5">{profile.basics.email}</p>
+          </section>
+          <section className="glass-card p-6 sm:p-8">
+            <h2 className="text-xl mb-4">{t.schedule.calendarTitle}</h2>
+            <p className="text-text-muted mb-6">{t.schedule.calendarDescription}</p>
+            <a href={calendarUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary" id="schedule-calendar-link">{t.schedule.calendarCta}</a>
+          </section>
+        </div>
+        {timeZone && <p className="text-text-muted text-sm mt-6">{t.schedule.timezone}: {timeZone}</p>}
+        <Link href="/" className="inline-block text-accent-sky-lt underline underline-offset-4 mt-10">{t.schedule.back}</Link>
+      </main>
+      <Footer />
     </>
   );
 };

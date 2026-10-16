@@ -17,6 +17,7 @@
   /* Accents */
   --accent-primary:    #0EA5E9;
   --accent-secondary:  #38BDF8;
+  --accent-sky:        #0EA5E9;
   --accent-travel:     #10B981;
   --accent-fintech:    #8B5CF6;
   --accent-amber:      #F59E0B;
@@ -24,7 +25,7 @@
   /* Text */
   --text-primary:  #F0F6FF;
   --text-muted:    #8BA8C8;
-  --text-faint:    #4A6A8A;
+  --text-faint:    #97ACC2;
 
   /* Borders */
   --border:        #1E3A5F;
@@ -45,6 +46,31 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+section[id], li[id], article[id] {
+  scroll-margin-top: 92px;
+}
+
+a:focus-visible, button:focus-visible, video:focus-visible {
+  outline: 2px solid #38BDF8;
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 12px;
+  z-index: 100;
+  padding: 10px 16px;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border-radius: 8px;
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
 
 body {
@@ -181,9 +207,11 @@ code, pre, .mono {
 }
 
 .glass-card:hover {
+  border-color: var(--border-light);
+}
+
+a.glass-card:hover {
   border-color: var(--accent-primary);
-  box-shadow: 0 0 30px var(--glow-primary);
-  transition: all 0.3s ease;
 }
 
 /* Gradient text */
@@ -270,7 +298,7 @@ code, pre, .mono {
   align-items: center;
   gap: 8px;
   padding: 12px 28px;
-  background: linear-gradient(135deg, var(--accent-primary), #0284C7);
+  background: #0369A1;
   border: none;
   border-radius: 10px;
   color: white;
@@ -280,11 +308,11 @@ code, pre, .mono {
   cursor: pointer;
   text-decoration: none;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+  box-shadow: none;
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(14, 165, 233, 0.5);
+  box-shadow: none;
   filter: brightness(1.1);
 }
 
@@ -387,4 +415,15 @@ code, pre, .mono {
   animation: blink 1s step-end infinite;
   color: var(--accent-primary);
   margin-left: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal, .reveal-child { opacity: 1; transform: none; }
 }

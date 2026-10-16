@@ -20,7 +20,7 @@ module.exports = {
         'accent-amber':  '#F59E0B',
         'text-primary':  '#F0F6FF',
         'text-muted':    '#8BA8C8',
-        'text-faint':    '#4A6A8A',
+        'text-faint':    '#97ACC2',
         'border-dark':   '#1E3A5F',
         'border-light':  '#253D5F',
         // Legacy (kept for schedule page compat)

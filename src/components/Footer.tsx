@@ -1,65 +1,26 @@
 import React from 'react';
 import Link from 'next/link';
+import { profile } from '../content/profile';
 import { useLanguage } from '../i18n/LanguageContext';
 
 const Footer: React.FC = () => {
   const { t } = useLanguage();
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer
-      className="py-8"
-      style={{
-        background: 'var(--bg-primary)',
-        borderTop: '1px solid var(--border)',
-      }}
-      role="contentinfo"
-    >
-      <div className="section-container">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          {/* Left: Name + tagline */}
-          <div className="flex items-center gap-3">
-            <span
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-display font-bold text-xs"
-              style={{ background: 'linear-gradient(135deg, #0EA5E9, #10B981)' }}
-              aria-hidden="true"
-            >
-              AC
-            </span>
-            <div>
-              <p className="font-display font-semibold text-text-primary text-sm">Andrés Cabrera</p>
-              <p className="font-mono text-text-faint text-xs">{t.footer.tagline}</p>
-            </div>
-          </div>
-
-          {/* Center: quick links */}
-          <nav aria-label={t.footer.navLabel}>
-            <ul className="flex items-center gap-6 list-none p-0 m-0">
-              {[
-                { label: 'CV (EN)', href: '/andrescabrera-eng.pdf' },
-                { label: 'CV (ES)', href: '/andrescabrera-spa.pdf' },
-                { label: 'LinkedIn', href: 'https://www.linkedin.com/in/andrescabrera24/' },
-                { label: t.footer.schedule, href: '/schedule' },
-              ].map(({ label, href }) => (
-                <li key={label}>
-                  <Link
-                    href={href}
-                    target={href.startsWith('http') || href.endsWith('.pdf') ? '_blank' : undefined}
-                    rel={href.startsWith('http') || href.endsWith('.pdf') ? 'noopener noreferrer' : undefined}
-                    className="text-text-faint text-xs font-mono hover:text-accent-sky transition-colors no-underline"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* Right: Copyright */}
-          <p className="font-mono text-text-faint text-xs">
-            © {currentYear} Andrés Cabrera
-          </p>
+    <footer className="py-8 border-t border-border-dark bg-bg-primary">
+      <div className="section-container flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+        <div>
+          <p className="font-display font-semibold text-sm">{profile.basics.name}</p>
+          <p className="text-text-muted text-xs mt-1 max-w-xs">{t.footer.tagline}</p>
         </div>
+        <nav aria-label={t.footer.navLabel}>
+          <ul className="flex flex-wrap gap-x-5 gap-y-3 list-none m-0 p-0 text-sm text-text-muted">
+            <li><a href="/andrescabrera-eng.pdf" target="_blank" rel="noopener noreferrer">CV (EN)</a></li>
+            <li><a href="/andrescabrera-spa.pdf" target="_blank" rel="noopener noreferrer">CV (ES)</a></li>
+            <li><a href={profile.basics.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><Link href="/schedule">{t.footer.schedule}</Link></li>
+          </ul>
+        </nav>
+        <p className="text-text-muted text-xs">© {new Date().getFullYear()} {profile.basics.name}</p>
       </div>
     </footer>
   );

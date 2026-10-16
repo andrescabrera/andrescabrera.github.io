@@ -1,0 +1,376 @@
+{
+  "basics": {
+    "name": "Andrés Cabrera",
+    "email": "info@andrescabrera.com.ar",
+    "website": "https://andrescabrera.com.ar",
+    "linkedin": "https://www.linkedin.com/in/andrescabrera24/",
+    "github": "https://github.com/andrescabrera",
+    "title": {
+      "en": "Senior Software Engineer",
+      "es": "Ingeniero de Software Senior"
+    },
+    "specialty": {
+      "en": "Backend, architecture & product modernization",
+      "es": "Backend, arquitectura y modernización de productos"
+    },
+    "summary": {
+      "en": "I build backend systems, integrate flight distribution and payment platforms, and modernize existing products. My work combines hands-on engineering, technical leadership and agent-assisted delivery — for both long-term roles and consulting engagements.",
+      "es": "Desarrollo sistemas backend, integro plataformas de distribución aérea y pagos, y modernizo productos existentes. Combino desarrollo, liderazgo técnico y entrega asistida por agentes, tanto en equipos de trabajo como en proyectos de consultoría."
+    },
+    "location": {
+      "en": "Remote · Argentina (UTC−3)",
+      "es": "Remoto · Argentina (UTC−3)"
+    },
+    "languages": {
+      "en": "Spanish · English: working proficiency",
+      "es": "Español · Inglés: nivel profesional funcional"
+    },
+    "education": {
+      "en": "Undergraduate studies in Computer Science — Universidad de Palermo",
+      "es": "Estudios de Licenciatura en Informática — Universidad de Palermo"
+    },
+    "earlierExperience": {
+      "en": "Earlier experience in middleware and enterprise applications at Efectivo SI, Dirección Nacional de Migraciones and Edesur.",
+      "es": "Experiencia previa en middleware y aplicaciones empresariales en Efectivo SI, Dirección Nacional de Migraciones y Edesur."
+    }
+  },
+  "proofPoints": [
+    {
+      "id": "production-searches",
+      "value": { "en": "12M", "es": "12M" },
+      "label": { "en": "Daily flight searches", "es": "Búsquedas de vuelos diarias" },
+      "context": {
+        "en": "Starlings · infrastructure modernization to support the platform’s recurring production demand.",
+        "es": "Starlings · modernización de infraestructura para sostener la demanda habitual de producción."
+      }
+    },
+    {
+      "id": "production-chat",
+      "value": { "en": "Thousands", "es": "Miles" },
+      "label": { "en": "Concurrent chat users", "es": "Usuarios concurrentes en el chat" },
+      "context": {
+        "en": "eSportunity · real production usage, supported by WebSockets and Redis Pub/Sub.",
+        "es": "eSportunity · uso real en producción, con WebSockets y Redis Pub/Sub."
+      }
+    },
+    {
+      "id": "booking-traceability",
+      "value": { "en": "End-to-end", "es": "De punta a punta" },
+      "label": { "en": "Booking traceability", "es": "Trazabilidad de reservas" },
+      "context": {
+        "en": "Starlings · observability across Search, Confirm, Issue, Retrieve, Ancillaries and Exchange.",
+        "es": "Starlings · observabilidad de Search, Confirm, Issue, Retrieve, Ancillaries y Exchange."
+      }
+    }
+  ],
+  "ai": {
+    "title": { "en": "AI & Agentic Coding", "es": "IA y Agentic Coding" },
+    "badge": { "en": "Applied AI", "es": "IA aplicada" },
+    "intro": {
+      "en": "Agent-driven software development, workflow automation and model adaptation: from coding harnesses and reusable Skills to fine-tuning and local inference.",
+      "es": "Desarrollo de software con agentes, automatización de flujos y adaptación de modelos: desde Harness Engineering y Skills reutilizables hasta fine-tuning e inferencia local."
+    },
+    "groups": [
+      {
+        "id": "agentic-coding",
+        "title": { "en": "Agentic Coding", "es": "Agentic Coding" },
+        "items": ["Harness Engineering", "Skills", "Claude Code", "OpenCode"],
+        "details": {
+          "en": [
+            "Harness Engineering: configuring the execution environment, context and tools for coding agents.",
+            "Reusable Skills to guide development tasks and workflows with Claude Code and OpenCode."
+          ],
+          "es": [
+            "Harness Engineering: configuración del entorno de ejecución, el contexto y las herramientas para agentes de programación.",
+            "Skills reutilizables para guiar tareas y flujos de desarrollo con Claude Code y OpenCode."
+          ]
+        }
+      },
+      {
+        "id": "ai-automation",
+        "title": { "en": "Automation & orchestration", "es": "Automatización y orquestación" },
+        "items": ["n8n", "LangGraph"],
+        "details": {
+          "en": [
+            "Workflow automation and service integrations with n8n.",
+            "Stateful agent workflows and orchestration with LangGraph."
+          ],
+          "es": [
+            "Automatización de flujos e integración de servicios con n8n.",
+            "Flujos de agentes con estado y orquestación mediante LangGraph."
+          ]
+        }
+      },
+      {
+        "id": "model-adaptation",
+        "title": { "en": "Fine-tuning & inference", "es": "Fine-tuning e inferencia" },
+        "items": ["Unsloth", "llama.cpp", "Ollama", "Strata"],
+        "details": {
+          "en": [
+            "Model fine-tuning with Unsloth.",
+            "Local model execution and inference with llama.cpp, Ollama and Strata."
+          ],
+          "es": [
+            "Ajuste fino de modelos con Unsloth.",
+            "Ejecución de modelos e inferencia local con llama.cpp, Ollama y Strata."
+          ]
+        }
+      },
+      {
+        "id": "agent-tool-integration",
+        "title": { "en": "Agent tool integration", "es": "Integración de herramientas para agentes" },
+        "items": ["MCP", "WebMCP"],
+        "details": {
+          "en": [
+            "Connecting product capabilities and tools to agent workflows through MCP and WebMCP.",
+            "Applied to agentic search as part of the Venetravel modernization."
+          ],
+          "es": [
+            "Conexión de capacidades de producto y herramientas con flujos agénticos mediante MCP y WebMCP.",
+            "Aplicado a búsqueda agéntica en la modernización de Venetravel."
+          ]
+        }
+      }
+    ],
+    "localModelsTitle": { "en": "Local AI models", "es": "Modelos de IA locales" },
+    "localModelsIntro": {
+      "en": "Local deployment and inference with Mixture of Experts (MoE) and dense model architectures.",
+      "es": "Despliegue e inferencia local con arquitecturas Mixture of Experts (MoE) y modelos densos."
+    },
+    "localModels": [
+      {
+        "id": "moe",
+        "title": { "en": "MoE", "es": "MoE" },
+        "items": ["Qwen3.6-35B-A3B", "Qwen3.8-Flash-Next"]
+      },
+      {
+        "id": "dense",
+        "title": { "en": "Dense", "es": "Densos" },
+        "items": ["Qwen3.8-27B"]
+      }
+    ],
+    "caseStudyLink": { "en": "See the Venetravel case study", "es": "Ver el caso de Venetravel" }
+  },
+  "experience": [
+    {
+      "id": "exp-starlings",
+      "company": "starlings.travel",
+      "start": "2025-04",
+      "end": null,
+      "domain": "travel",
+      "role": { "en": "Software Engineer", "es": "Desarrollador de Software" },
+      "stack": ["Kotlin", "Java", "Kafka", "Docker", "NDC", "Observability"],
+      "highlights": {
+        "en": [
+          "Modernized infrastructure and introduced containers in production, optimizing server resources to sustain a recurring volume of 12 million flight searches per day.",
+          "Independently implemented Air Europa (UX/PROS), Turkish Airlines (TK), Volaris (Y4) and Travelfusion integrations.",
+          "Resolved complex Sabre NDC-S and Amadeus NDC-X issues; developed European resident-fare flows for Air Europa and Iberia, and connector features for Arajet.",
+          "Designed and implemented end-to-end observability for Search, Confirm, Issue and Retrieve, including Ancillaries and Exchange."
+        ],
+        "es": [
+          "Modernicé la infraestructura e implementé contenedores en producción, optimizando recursos para sostener un volumen habitual de 12 millones de búsquedas de vuelos diarias.",
+          "Implementé de forma independiente las integraciones con Air Europa (UX/PROS), Turkish Airlines (TK), Volaris (Y4) y Travelfusion.",
+          "Resolví casos complejos de Sabre NDC-S y Amadeus NDC-X; desarrollé flujos de residentes europeos para Air Europa e Iberia y funcionalidades de conectores para Arajet.",
+          "Diseñé e implementé observabilidad de punta a punta para Search, Confirm, Issue y Retrieve, incluidos Ancillaries y Exchange."
+        ]
+      }
+    },
+    {
+      "id": "exp-esportunity",
+      "company": "eSportunity",
+      "start": "2023-04",
+      "end": "2025-04",
+      "domain": "engineering",
+      "role": { "en": "Founding Engineer", "es": "Ingeniero del equipo fundador" },
+      "stack": ["Kotlin", "Kafka", "GraphQL", "WebSockets", "Redis", "AWS"],
+      "highlights": {
+        "en": [
+          "Built an event-driven esports platform as part of the founding engineering team, from initial development to production launch. The product was subsequently discontinued.",
+          "Implemented real-time chat with WebSockets and Redis Pub/Sub that served thousands of concurrent users in production.",
+          "Developed post lookup algorithms with an estimated 40–60% improvement in timeline rendering for the planned user base.",
+          "Contributed to technical and business decisions and recruited specialized engineers to accelerate the production launch."
+        ],
+        "es": [
+          "Construí una plataforma de esports orientada a eventos como parte del equipo técnico fundador, desde el desarrollo inicial hasta su lanzamiento. El producto posteriormente cerró.",
+          "Implementé el chat con WebSockets y Redis Pub/Sub, que atendió a miles de usuarios concurrentes en producción.",
+          "Desarrollé algoritmos de búsqueda de publicaciones con una mejora estimada del 40–60 % en el renderizado del timeline para la base de usuarios prevista.",
+          "Participé en decisiones técnicas y de negocio y en la contratación de ingenieros especializados para acelerar la salida a producción."
+        ]
+      }
+    },
+    {
+      "id": "exp-rappi",
+      "company": "Rappi · RappiPay",
+      "start": "2020-11",
+      "end": "2023-04",
+      "domain": "fintech",
+      "role": { "en": "Software Developer & Tech Lead", "es": "Desarrollador de Software y Líder Técnico" },
+      "stack": ["Kotlin", "Spring", "Kafka", "ISO8583", "Netty", "Kubernetes"],
+      "highlights": {
+        "en": [
+          "Led the Authorizer team, working on card authorization, anti-fraud systems and ISO8583 integrations using Netty.",
+          "Led the wallet movements core redesign and development of new features, coordinating engineers across Mexico, Colombia and Argentina."
+        ],
+        "es": [
+          "Lideré el equipo Authorizer, trabajando en autorización de tarjetas, sistemas antifraude e integraciones ISO8583 con Netty.",
+          "Lideré el rediseño del núcleo de movimientos de billetera y el desarrollo de nuevas funcionalidades, coordinando ingenieros de México, Colombia y Argentina."
+        ]
+      }
+    },
+    {
+      "id": "exp-wenance",
+      "company": "FinTech Banking Startup",
+      "start": "2020-03",
+      "end": "2020-11",
+      "domain": "fintech",
+      "role": { "en": "Software Developer", "es": "Desarrollador de Software" },
+      "stack": ["Java", "Project Reactor", "AWS SQS", "Mambu"],
+      "highlights": {
+        "en": ["Designed and delivered a loan disbursement solution with Project Reactor and AWS SQS. Maintained Mambu-based banking APIs and integrated STP (Mexico) and Instantor (Spain)."],
+        "es": ["Diseñé e implementé una solución de desembolsos con Project Reactor y AWS SQS. Mantuve APIs bancarias basadas en Mambu e integré STP (México) e Instantor (España)."]
+      }
+    },
+    {
+      "id": "exp-despegar",
+      "company": "Despegar.com",
+      "start": "2018-10",
+      "end": "2020-03",
+      "domain": "travel",
+      "role": { "en": "Software Developer", "es": "Desarrollador de Software" },
+      "stack": ["Scala", "Finatra", "Akka", "Amadeus", "Sabre", "Travelport"],
+      "highlights": {
+        "en": ["Developed Scala services for voluntary flight exchanges, resolving ticketing and exchange integrations with Sabre, Travelport and Amadeus, and implementing fare arbitrage logic."],
+        "es": ["Desarrollé servicios Scala para cambios voluntarios de vuelos, resolviendo integraciones de emisión y cambios con Sabre, Travelport y Amadeus e implementando lógica de arbitraje tarifario."]
+      }
+    },
+    {
+      "id": "exp-avantrip",
+      "company": "Avantrip.com",
+      "start": "2018-01",
+      "end": "2018-10",
+      "domain": "travel",
+      "role": { "en": "Full Stack Java Developer", "es": "Desarrollador Java Full Stack" },
+      "stack": ["Java", "Spring", "Angular", "Spring Cloud Stream"],
+      "highlights": {
+        "en": ["Developed a travel back-office platform with Spring and Angular, including a SAP Travel One billing integration using Spring Cloud Stream."],
+        "es": ["Desarrollé una plataforma de back-office de viajes con Spring y Angular e integré la facturación de SAP Travel One mediante Spring Cloud Stream."]
+      }
+    },
+    {
+      "id": "exp-monsanto",
+      "company": "Monsanto",
+      "start": "2017-05",
+      "end": "2018-01",
+      "domain": "engineering",
+      "role": { "en": "Full Stack Java Developer", "es": "Desarrollador Java Full Stack" },
+      "engagement": { "en": "Project contract · 8 months", "es": "Contrato por proyecto · 8 meses" },
+      "stack": ["Spring", "Kafka Streams", "Spring Cloud Dataflow"],
+      "highlights": {
+        "en": ["Worked on the Value Capture Transformation project, migrating royalties and billing integrations to an event-driven cloud architecture with Kafka Streams and Spring Cloud Dataflow."],
+        "es": ["Trabajé en Value Capture Transformation, migrando la gestión de regalías e integraciones de facturación a una arquitectura cloud orientada a eventos con Kafka Streams y Spring Cloud Dataflow."]
+      }
+    },
+    {
+      "id": "exp-galicia",
+      "company": "Banco Galicia",
+      "start": "2016-10",
+      "end": "2017-05",
+      "domain": "fintech",
+      "role": { "en": "Java Software Developer", "es": "Desarrollador Java" },
+      "stack": ["Java", "Spring Dynamic Modules", "OSGi"],
+      "highlights": {
+        "en": ["Developed modules for a multi-channel banking application using Spring Dynamic Modules and OSGi."],
+        "es": ["Desarrollé módulos para una aplicación de banca multicanal con Spring Dynamic Modules y OSGi."]
+      }
+    },
+    {
+      "id": "exp-hsbc",
+      "company": "IBM · HSBC Bank",
+      "start": "2015-06",
+      "end": "2016-10",
+      "domain": "fintech",
+      "role": { "en": "Full Stack Java Developer", "es": "Desarrollador Java Full Stack" },
+      "stack": ["Java", "Spring", "Dojo Toolkit", "WebSphere"],
+      "highlights": {
+        "en": ["Developed the Money Markets application migration for HSBC, including the MatriXS Evergreening SPA, backend services and dynamic scripting tools."],
+        "es": ["Desarrollé la migración de la aplicación Money Markets de HSBC, incluida la SPA MatriXS Evergreening, servicios backend y herramientas de scripting dinámico."]
+      }
+    }
+  ],
+  "projects": [
+    {
+      "id": "venetravel",
+      "name": "Venetravel",
+      "start": "2025",
+      "end": "2026",
+      "url": "https://venetravel.net",
+      "role": { "en": "Forward Deployed Engineer", "es": "Forward Deployed Engineer" },
+      "status": { "en": "Live product", "es": "Producto en producción" },
+      "stack": ["SPA", "PHP 8", "MCP", "WebMCP", "Google Tag Manager"],
+      "challenge": {
+        "en": "Decouple an existing travel booking application and modernize its user experience and architecture.",
+        "es": "Desacoplar una aplicación de reservas existente y modernizar su experiencia de usuario y arquitectura."
+      },
+      "highlights": {
+        "en": [
+          "Re-architected the application from server-rendered HTML to a modern SPA and migrated the backend from PHP 7 to PHP 8.",
+          "Enabled agentic search through MCP and WebMCP, and added site tracking with Google Tag Manager and observability tools.",
+          "Directed an agent-driven development workflow, delivering the modernization in stages from planning in 2025 to completion in 2026."
+        ],
+        "es": [
+          "Rearquitecturé la aplicación: del HTML renderizado en servidor a una SPA moderna, con migración del backend de PHP 7 a PHP 8.",
+          "Habilité búsqueda agéntica mediante MCP y WebMCP e incorporé seguimiento con Google Tag Manager y herramientas de observabilidad.",
+          "Dirigí un flujo de desarrollo basado en agentes, con entrega por etapas desde la planificación en 2025 hasta la finalización en 2026."
+        ]
+      }
+    },
+    {
+      "id": "esportunity",
+      "experienceId": "exp-esportunity",
+      "name": "eSportunity",
+      "url": "https://www.upwork.com/freelancers/~0142a6acf7665542e5?p=1907834074140811264",
+      "status": { "en": "Launched · discontinued", "es": "Lanzado · cerrado" },
+      "stack": ["Kotlin", "Kafka", "GraphQL", "WebSockets", "Redis"],
+      "challenge": {
+        "en": "Build an esports talent platform from its initial stage, with an opportunity board, community feed and real-time messaging.",
+        "es": "Construir desde su etapa inicial una plataforma de talento en esports, con bolsa de oportunidades, feed comunitario y mensajería en tiempo real."
+      }
+    }
+  ],
+  "skills": [
+    {
+      "id": "backend",
+      "name": { "en": "Backend", "es": "Backend" },
+      "items": ["Kotlin", "Scala", "Java", "PHP 8", "Spring", "GraphQL", "gRPC"]
+    },
+    {
+      "id": "distribution",
+      "name": { "en": "Flight distribution", "es": "Distribución aérea" },
+      "items": ["NDC", "Amadeus", "Sabre", "Travelport", "Travelfusion", "Airline APIs"]
+    },
+    {
+      "id": "platform",
+      "name": { "en": "Infrastructure & events", "es": "Infraestructura y eventos" },
+      "items": ["Docker", "Kubernetes", "AWS", "Kafka", "Redis", "AWS SQS"]
+    },
+    {
+      "id": "payments",
+      "name": { "en": "Payments", "es": "Pagos" },
+      "items": ["ISO8583", "Netty", "Mambu", "Webhooks", "Project Reactor"]
+    },
+    {
+      "id": "product",
+      "name": { "en": "Web & data", "es": "Web y datos" },
+      "items": ["TypeScript", "React", "Next.js", "SPA", "PostgreSQL", "MongoDB"]
+    },
+    {
+      "id": "delivery",
+      "name": { "en": "Delivery & observability", "es": "Entrega y observabilidad" },
+      "items": ["CI/CD", "Google Tag Manager"],
+      "detail": {
+        "en": "Software delivery, production traceability and technical leadership.",
+        "es": "Entrega de software, trazabilidad en producción y liderazgo técnico."
+      }
+    }
+  ]
+}

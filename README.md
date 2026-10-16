@@ -1,30 +1,64 @@
-# andrescabrera github page
+# Andrés Cabrera — professional profile
 
-### based on Blackgyalbites nextjs sample
+Bilingual portfolio and CVs for backend engineering, architecture and product modernization.
 
-## Template for No-touch Menus and Host Static Pages Built with Any Framework on GitHub Pages
+**Website:** [andrescabrera.com.ar](https://andrescabrera.com.ar)
 
-![screenshot of website with 3 buttons that read: CV ENG menu, CV SPA menu, and Family, Travel and Foods menu. on the right of it is a screenshot of the Family, Travel and Foods menu](https://user-images.githubusercontent.com/22990146/182385358-364d812f-a5a8-48ad-9ac7-3bf9e14d9614.png)
+Built with Next.js, React, TypeScript and Tailwind CSS, exported as a static site for GitHub Pages.
 
-### Website built with Next.js and Tailwind CSS to display bio menus when users scan a QR code.
+## Development
 
-## Powered By GitHub Pages
+```sh
+yarn install --frozen-lockfile
+yarn dev
+```
 
-Link to live site: https://andrescabrera.github.io/
+## Update the profile and CVs
 
-### Design and Development
-All designs and elements are open source, available for free for anyone to use. Based on:
+Professional information lives in **[`src/content/profile.json`](src/content/profile.json)**:
 
-Owned by Rizel Scarlett [(@blackgirlbytes)](https://github.com/blackgirlbytes)
+- Identity, summary, education and languages in English and Spanish.
+- A single set of employment dates shared by both languages.
+- Roles, contributions, project case studies and technical skills.
+- A dedicated AI section: Agentic Coding, Harness Engineering, Skills, Claude Code, OpenCode, n8n, LangGraph, Unsloth, llama.cpp, Ollama, Strata, MCP and WebMCP.
+- Local model experience: Qwen3.6-35B-A3B and Qwen3.8-Flash-Next (MoE), and Qwen3.8-27B (dense).
+- Production results with their context; estimates are explicitly identified.
 
-Designed by [The Holistic Technologist](https://holistictech.io)
+Interface labels and section introductions live in `src/i18n/dictionaries.ts`.
 
-Illustrations by [Cuoc Doi Prints](https://www.cuocdoiprints.com)
+To regenerate both PDFs after editing the profile:
 
-Feel free to fork, copy, tweak, and use for any purpose. This project is completely open source, and under [MIT license](https://github.com/andrescabrera/andrescabrera.github.io/blob/main/LICENSE). 
+```sh
+yarn cv
+```
 
-Menu Design Template: [Canva](https://www.canva.com/design/DAFGhaCejFw/zy2w9ZjXJBZ3NssSdfhpTw/view?utm_content=DAFGhaCejFw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+This uses locally installed Chrome or Chromium and the print stylesheet in `scripts/cv.css`. Set `CHROME_PATH` if the browser is not on `PATH`.
 
-Download Assets & Design Elements: [Google Drive](https://drive.google.com/drive/u/0/folders/12vHecd82FiiphDGSpwRA8cndsdzDy5QG)
+Generated files:
 
-![blackgirlbytes logo](https://user-images.githubusercontent.com/22990146/182384548-5af4d85e-3439-449a-bac4-6b213eb6b18c.png)
+- `public/andrescabrera-eng.pdf` — English CV.
+- `public/andrescabrera-spa.pdf` — Spanish CV.
+- `build/cv/en.html` and `build/cv/es.html` — print previews, excluded from Git.
+
+The CVs use selectable text, a single-column layout and active contact links. No LaTeX installation is required.
+
+## Validate and build
+
+```sh
+yarn lint
+yarn build
+```
+
+The static site is generated in `out/`. Commit the regenerated PDFs along with profile changes; build output is ignored by Git.
+
+Pushes to `main` deploy through `.github/workflows/pages.yml` using GitHub Pages.
+
+The interface detects the browser language on first visit and preserves an explicit EN/ES selection. CV download buttons follow the selected language. Navigation, project screenshots and contact actions support keyboard use; video autoplay respects reduced-motion preferences.
+
+## Assets and attribution
+
+Profile assets and project demonstrations are in `public/`. The portrait is a tighter crop of the original photograph; the social preview includes the name and professional focus.
+
+Originally based on the Next.js/GitHub Pages template by [Rizel Scarlett (@blackgirlbytes)](https://github.com/blackgirlbytes), with original design credits to [The Holistic Technologist](https://holistictech.io) and [Cuoc Doi Prints](https://www.cuocdoiprints.com).
+
+See [LICENSE](LICENSE).
