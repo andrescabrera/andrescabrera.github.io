@@ -1,0 +1,78 @@
+{
+  "id": "oracle-integrations",
+  "title": {
+    "en": "Oracle Suite integrations",
+    "es": "Integraciones con Oracle Suite"
+  },
+  "summary": {
+    "en": "I build backend systems, integrate flight distribution and payment platforms, and modernize existing products.\nExperience integrating Oracle Suites: Salesforce. Siebel. Mobile Workforce Management.\nI combine hands-on engineering, technical leadership and agent-assisted delivery — both in teams and in consulting engagements.",
+    "es": "Desarrollo sistemas backend, integro plataformas de distribución aérea y pagos, y modernizo productos existentes.\nExperiencia en Integraciones con Oracle Suites: Salesforce. Siebel. Mobile Workforce Management.\nCombino desarrollo, liderazgo técnico y entrega asistida por agentes, tanto en equipos de trabajo como en proyectos de consultoría."
+  },
+  "earlierExperience": {
+    "en": "Earlier experience in middleware and enterprise applications at Dirección Nacional de Migraciones.",
+    "es": "Experiencia previa en middleware y aplicaciones empresariales en la Dirección Nacional de Migraciones."
+  },
+  "experience": [
+    {
+      "id": "exp-efectivosi",
+      "company": {
+        "en": "EfectivoSI · Regional Payment Processor",
+        "es": "EfectivoSI · Procesador de Pagos Regional"
+      },
+      "start": "2014-05",
+      "end": "2015-06",
+      "domain": "fintech",
+      "role": {
+        "en": "Java Backend Developer",
+        "es": "Desarrollador Backend Java"
+      },
+      "stack": ["Java", "Spring-WS", "Spring REST", "Siebel", "Middleware"],
+      "highlights": {
+        "en": [
+          "Developed Siebel integrations within Java middleware solutions using Spring-WS and Spring REST for a regional payment processor.",
+          "Contributed to tooling and development methodology improvements for the middleware team."
+        ],
+        "es": [
+          "Desarrollé integraciones contra Siebel dentro de soluciones middleware en Java con Spring-WS y Spring REST para un procesador de pagos regional.",
+          "Contribuí a la incorporación de herramientas y mejoras de metodología de desarrollo para el equipo de middleware."
+        ]
+      }
+    },
+    {
+      "id": "exp-edesur",
+      "company": "Edesur S.A.",
+      "start": "2011-11",
+      "end": "2012-11",
+      "domain": "engineering",
+      "role": {
+        "en": "Full Stack Software Developer",
+        "es": "Desarrollador de Software Full Stack"
+      },
+      "stack": ["C#", "Java", "Spring", "Oracle MWM"],
+      "highlights": {
+        "en": [
+          "Developed the SAE emergency response system, including integrations against Oracle Mobile Workforce Management (MWM)."
+        ],
+        "es": [
+          "Desarrollé el sistema de atención de emergencias SAE, incluidas integraciones contra Oracle Mobile Workforce Management (MWM)."
+        ]
+      }
+    }
+  ],
+  "skills": [
+    {
+      "id": "oracle-enterprise",
+      "name": {
+        "en": "Oracle & enterprise integrations",
+        "es": "Oracle e integraciones empresariales"
+      },
+      "items": ["Oracle Siebel", "Oracle Mobile Workforce Management", "Salesforce"]
+    }
+  ],
+  "compactEarlier": true,
+  "compactLayout": true,
+  "output": {
+    "directory": "public/cv/oracle-integrations",
+    "filePrefix": "andrescabrera-cv-oracle-integrations"
+  }
+}

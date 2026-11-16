@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /cv/
 
 Sitemap: https://andrescabrera.com.ar/sitemap.xml

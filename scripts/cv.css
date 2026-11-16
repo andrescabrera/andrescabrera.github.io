@@ -14,7 +14,7 @@ li { padding-left: 1pt; margin-bottom: 3pt; }
 .role { font-size: 12pt; font-weight: 700; margin-top: 5pt; }
 .specialty { font-size: 10pt; margin-top: 2pt; }
 .contact { font-size: 8.5pt; margin-top: 7pt; line-height: 1.5; }
-.summary { margin-top: 9pt; }
+.summary { margin-top: 9pt; white-space: pre-line; }
 .skills { margin: 0; font-size: 9pt; }
 .skills p { margin-bottom: 1pt; }
 .ai-expertise { break-inside: avoid; }

@@ -24,13 +24,18 @@ Professional information lives in **[`src/content/profile.json`](src/content/pro
 - Local model experience: Qwen3.6-35B-A3B and Qwen3.8-Flash-Next (MoE), and Qwen3.8-27B (dense).
 - Production results with their context; estimates are explicitly identified.
 
+Tailored CV variants live in `src/content/cv-variants/`. They reuse the site profile and add
+version-specific summaries, skills and roles without changing the main CV or the website.
+
 Interface labels and section introductions live in `src/i18n/dictionaries.ts`.
 
-To regenerate both PDFs after editing the profile:
+To regenerate the main PDFs and the Oracle integrations variant:
 
 ```sh
 yarn cv
 ```
+
+Use `yarn cv:main` for only the main CVs or `yarn cv:oracle` for only the variant.
 
 This uses locally installed Chrome or Chromium and the print stylesheet in `scripts/cv.css`. Set `CHROME_PATH` if the browser is not on `PATH`.
 
@@ -38,6 +43,9 @@ Generated files:
 
 - `public/andrescabrera-eng.pdf` — English CV.
 - `public/andrescabrera-spa.pdf` — Spanish CV.
+- `public/cv/oracle-integrations/andrescabrera-cv-oracle-integrations-eng.pdf` — unlisted English variant.
+- `public/cv/oracle-integrations/andrescabrera-cv-oracle-integrations-spa.pdf` — unlisted Spanish variant.
+- `public/cv/oracle-integrations/index.html` — unlisted page with links to both variants. It uses `noindex` metadata and `/cv/` is disallowed in `robots.txt`.
 - `build/cv/en.html` and `build/cv/es.html` — print previews, excluded from Git.
 
 The CVs use selectable text, a single-column layout and active contact links. No LaTeX installation is required.
