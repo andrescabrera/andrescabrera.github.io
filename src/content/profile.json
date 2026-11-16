@@ -185,13 +185,13 @@
       "stack": ["Kotlin", "Kafka", "GraphQL", "WebSockets", "Redis", "AWS"],
       "highlights": {
         "en": [
-          "Built an event-driven esports platform as part of the founding engineering team, from initial development to production launch. The product was subsequently discontinued.",
+          "Built an event-driven esports platform as part of the founding engineering team, from initial development to production launch.",
           "Implemented real-time chat with WebSockets and Redis Pub/Sub that served thousands of concurrent users in production.",
           "Developed post lookup algorithms with an estimated 40–60% improvement in timeline rendering for the planned user base.",
           "Contributed to technical and business decisions and recruited specialized engineers to accelerate the production launch."
         ],
         "es": [
-          "Construí una plataforma de esports orientada a eventos como parte del equipo técnico fundador, desde el desarrollo inicial hasta su lanzamiento. El producto posteriormente cerró.",
+          "Construí una plataforma de esports orientada a eventos como parte del equipo técnico fundador, desde el desarrollo inicial hasta su lanzamiento.",
           "Implementé el chat con WebSockets y Redis Pub/Sub, que atendió a miles de usuarios concurrentes en producción.",
           "Desarrollé algoritmos de búsqueda de publicaciones con una mejora estimada del 40–60 % en el renderizado del timeline para la base de usuarios prevista.",
           "Participé en decisiones técnicas y de negocio y en la contratación de ingenieros especializados para acelerar la salida a producción."
