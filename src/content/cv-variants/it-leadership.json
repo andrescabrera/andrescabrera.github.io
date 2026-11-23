@@ -1,0 +1,123 @@
+{
+  "id": "it-leadership-9f3c1",
+  "title": {
+    "en": "IT Leadership",
+    "es": "Liderazgo IT"
+  },
+  "headline": {
+    "title": {
+      "en": "IT Leader",
+      "es": "Líder IT"
+    },
+    "specialty": {
+      "en": "Engineering leadership · Architecture · Delivery",
+      "es": "Liderazgo de equipos · Arquitectura · Entrega"
+    }
+  },
+  "summary": {
+    "en": "IT leader with 15+ years building and leading backend platforms in travel tech and payments. I combine architecture, hands-on delivery and team leadership: flight distribution (NDC/GDS), card authorization and wallet platforms, and product modernization. I have led engineering teams across Mexico, Colombia and Argentina, mentored developers, and introduced agent-assisted workflows to ship reliable systems at scale.",
+    "es": "Líder IT con más de 15 años construyendo y liderando plataformas backend en travel tech y pagos. Combino arquitectura, entrega manos a la obra y liderazgo de equipos: distribución aérea (NDC/GDS), autorización de tarjetas y billeteras, y modernización de productos. Lideré equipos de ingeniería en México, Colombia y Argentina, mentoreé desarrolladores e incorporé flujos de trabajo asistidos por agentes para sostener sistemas confiables a escala."
+  },
+  "earlierExperience": {
+    "en": "Earlier experience in middleware and enterprise applications at Dirección Nacional de Migraciones and Edesur.",
+    "es": "Experiencia previa en middleware y aplicaciones empresariales en la Dirección Nacional de Migraciones y Edesur."
+  },
+  "overrides": {
+    "exp-starlings": {
+      "role": {
+        "en": "Software Architect",
+        "es": "Arquitecto de Software"
+      }
+    },
+    "exp-rappi": {
+      "company": "RappiPay",
+      "role": {
+        "en": "Engineering Lead",
+        "es": "Líder de Ingeniería"
+      }
+    },
+    "exp-despegar": {
+      "role": {
+        "en": "Mentor",
+        "es": "Mentor"
+      },
+      "highlights": {
+        "en": [
+          "Developed Scala services for voluntary flight exchanges, resolving ticketing and exchange integrations with Sabre, Travelport and Amadeus, and implementing fare arbitrage logic.",
+          "Mentored developers on flight exchange, ticketing and GDS integration practices."
+        ],
+        "es": [
+          "Desarrollé servicios Scala para cambios voluntarios de vuelos, resolviendo integraciones de emisión y cambios con Sabre, Travelport y Amadeus e implementando lógica de arbitraje tarifario.",
+          "Mentoreé desarrolladores en prácticas de cambios de vuelo, emisión e integración con GDS."
+        ]
+      }
+    },
+    "exp-avantrip": {
+      "role": {
+        "en": "Tech Lead",
+        "es": "Líder Técnico"
+      },
+      "highlights": {
+        "en": [
+          "Led the development of a travel back-office platform with Spring and Angular, including a SAP Travel One billing integration using Spring Cloud Stream."
+        ],
+        "es": [
+          "Lideré el desarrollo de una plataforma de back-office de viajes con Spring y Angular e integré la facturación de SAP Travel One mediante Spring Cloud Stream."
+        ]
+      }
+    },
+    "exp-hsbc": {
+      "company": {
+        "en": "HSBC · via IBM",
+        "es": "HSBC · por IBM"
+      },
+      "role": {
+        "en": "Tech Lead",
+        "es": "Líder Técnico"
+      },
+      "highlights": {
+        "en": [
+          "Led the Money Markets application migration for HSBC, including the MatriXS Evergreening SPA, backend services and dynamic scripting tools."
+        ],
+        "es": [
+          "Lideré la migración de la aplicación Money Markets de HSBC, incluida la SPA MatriXS Evergreening, servicios backend y herramientas de scripting dinámico."
+        ]
+      }
+    }
+  },
+  "experience": [
+    {
+      "id": "exp-efectivosi",
+      "company": {
+        "en": "EfectivoSI · Regional Payment Processor",
+        "es": "EfectivoSI · Procesador de Pagos Regional"
+      },
+      "start": "2014-05",
+      "end": "2015-06",
+      "domain": "fintech",
+      "role": {
+        "en": "Tech Lead",
+        "es": "Líder Técnico"
+      },
+      "stack": ["Java", "Spring-WS", "Spring REST", "Siebel", "Middleware"],
+      "highlights": {
+        "en": [
+          "Led the Java middleware work for Siebel integrations using Spring-WS and Spring REST at a regional payment processor.",
+          "Drove tooling and development methodology improvements for the middleware team."
+        ],
+        "es": [
+          "Lideré el trabajo de middleware Java para integraciones con Siebel usando Spring-WS y Spring REST en un procesador de pagos regional.",
+          "Impulsé mejoras de herramientas y metodología de desarrollo para el equipo de middleware."
+        ]
+      }
+    }
+  ],
+  "recentExperienceCount": 3,
+  "compactHighlightCount": 2,
+  "compactEarlier": true,
+  "compactLayout": true,
+  "output": {
+    "directory": "public/cv/it-leadership-9f3c1",
+    "filePrefix": "andrescabrera-cv-it-leadership"
+  }
+}

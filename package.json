@@ -6,9 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "cv": "node scripts/generate-cv.mjs && node scripts/generate-cv.mjs src/content/cv-variants/oracle-integrations.json",
+    "cv": "node scripts/generate-cv.mjs && node scripts/generate-cv.mjs src/content/cv-variants/oracle-integrations.json && node scripts/generate-cv.mjs src/content/cv-variants/it-leadership.json",
     "cv:main": "node scripts/generate-cv.mjs",
     "cv:oracle": "node scripts/generate-cv.mjs src/content/cv-variants/oracle-integrations.json",
+    "cv:it-leadership": "node scripts/generate-cv.mjs src/content/cv-variants/it-leadership.json",
     "lint": "next lint"
   },
   "dependencies": {

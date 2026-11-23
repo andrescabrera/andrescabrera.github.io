@@ -7,7 +7,6 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const baseProfile = JSON.parse(readFileSync(join(root, 'src/content/profile.json'), 'utf8'));
 const baseCss = readFileSync(join(root, 'scripts/cv.css'), 'utf8');
 const buildDir = join(root, 'build/cv');
-const recentExperienceCount = 2;
 mkdirSync(buildDir, { recursive: true });
 
 const executable = process.env.CHROME_PATH || ['google-chrome', 'chromium', 'chromium-browser']
@@ -26,18 +25,39 @@ if (variant) {
   }
 }
 
-// Variants reuse the site profile and only override the summary, earlier-experience note,
-// skills and the additional roles that should appear in that specific version.
+// Variants reuse the site profile and only override the summary, headline, earlier-experience note,
+// skills, existing roles and the additional roles that should appear in that specific version.
 const profile = variant ? {
   ...baseProfile,
   basics: {
     ...baseProfile.basics,
     summary: variant.summary,
+    title: { ...baseProfile.basics.title, ...(variant.headline?.title ?? {}) },
+    specialty: { ...baseProfile.basics.specialty, ...(variant.headline?.specialty ?? {}) },
     earlierExperience: variant.earlierExperience ?? baseProfile.basics.earlierExperience,
   },
-  experience: [...baseProfile.experience, ...(variant.experience ?? [])],
+  experience: [
+    ...baseProfile.experience.map((entry) => ({ ...entry })),
+    ...(variant.experience ?? []),
+  ].map((entry) => {
+    const override = variant.overrides?.[entry.id];
+    if (!override) return entry;
+    return {
+      ...entry,
+      ...(override.role ? { role: { ...entry.role, ...override.role } } : {}),
+      ...(override.company ? { company: override.company } : {}),
+      ...(override.highlights ? { highlights: { ...entry.highlights, ...override.highlights } } : {}),
+    };
+  }),
   skills: [...baseProfile.skills, ...(variant.skills ?? [])],
 } : baseProfile;
+const recentExperienceCount = variant?.recentExperienceCount ?? 2;
+const compactHighlightCount = variant?.compactHighlightCount ?? 1;
+if (variant?.overrides) {
+  for (const id of Object.keys(variant.overrides)) {
+    if (!profile.experience.some((entry) => entry.id === id)) throw new Error(`Unknown override experience: ${id}`);
+  }
+}
 
 // Tailored variants add older roles, so they use a slightly tighter print layout
 // to keep the CV at two pages without changing the main CVs.
@@ -95,7 +115,7 @@ for (const lang of ['en', 'es']) {
       <div class="entry-header"><h3>${escape(entry.role[lang])}</h3><span class="period">${escape(period(entry.start, entry.end, lang))}</span></div>
       <p class="company">${escape(localized(entry.company, lang))}</p>
       ${entry.engagement ? `<p class="engagement">${escape(entry.engagement[lang])}</p>` : ''}
-      ${compact ? `<p class="description">${escape(entry.highlights[lang][0])}</p>` : `<ul>${entry.highlights[lang].map((text) => `<li>${escape(text)}</li>`).join('')}</ul>`}
+      ${compact ? entry.highlights[lang].slice(0, compactHighlightCount).map((text) => `<p class="description">${escape(text)}</p>`).join('') : `<ul>${entry.highlights[lang].map((text) => `<li>${escape(text)}</li>`).join('')}</ul>`}
     </article>`;
   const venetravel = profile.projects.find((project) => project.id === 'venetravel');
   const variantTitle = variant ? ` · ${localized(variant.title, lang)}` : '';
