@@ -12,7 +12,6 @@ const ContactSection: React.FC = () => {
     { label: 'WhatsApp · VE', href: 'https://wa.me/584126204490' },
     { label: 'WhatsApp · AR', href: 'https://wa.me/5491135833449' },
     { label: t.contact.referral, href: 'https://app.onstrider.com/r/andres_mcmjbt' },
-    { label: t.contact.githubAlt, href: 'https://github.com/andrescabrera-esportunity' },
   ];
   return (
     <section id="contact" className="py-16 lg:py-20 border-t border-border-dark" aria-label={t.contact.sectionLabel}>

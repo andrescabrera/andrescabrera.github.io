@@ -105,10 +105,11 @@ const PortfolioSection: React.FC = () => {
                       {highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
                     </ul>
                     <p className="text-sm text-text-muted mb-6">{project.stack.join(' · ')}</p>
-                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="btn-primary" id={`portfolio-${project.id}-site`}>
-                      {project.id === 'venetravel' ? t.portfolio.visit : t.portfolio.upwork}
-                    </a>
-                    {project.id === 'esportunity' && <a href="https://github.com/andrescabrera-esportunity" target="_blank" rel="noopener noreferrer" className="block text-sm text-text-muted underline underline-offset-4 mt-4">{t.portfolio.github}</a>}
+                    {project.id === 'venetravel' && (
+                      <a href={project.url} target="_blank" rel="noopener noreferrer" className="btn-primary" id={`portfolio-${project.id}-site`}>
+                        {t.portfolio.visit}
+                      </a>
+                    )}
                   </div>
                   <div className="min-w-0">{project.id === 'venetravel' ? <BookingDemo /> : <EsportunityGallery />}</div>
                 </div>
