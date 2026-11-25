@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { formatPeriod, getExperience, profile } from '../content/profile';
 import { useLanguage } from '../i18n/LanguageContext';
 import SectionHeading from './SectionHeading';
-import EsportunityDemo from './EsportunityDemo';
+import EsportunityStage from './EsportunityStage';
 
 const BookingDemo: React.FC = () => {
   const { t } = useLanguage();
@@ -86,7 +86,7 @@ const PortfolioSection: React.FC = () => {
               return (
                 <article id={`project-${project.id}`} key={project.id} className="glass-card p-6 sm:p-8">
                   <div className="mb-8">{copy}</div>
-                  <EsportunityDemo />
+                  <EsportunityStage />
                 </article>
               );
             }
