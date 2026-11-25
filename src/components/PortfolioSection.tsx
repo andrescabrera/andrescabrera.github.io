@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { formatPeriod, getExperience, profile } from '../content/profile';
 import { useLanguage } from '../i18n/LanguageContext';
 import SectionHeading from './SectionHeading';
-import EsportunityStage from './EsportunityStage';
 
 const BookingDemo: React.FC = () => {
   const { t } = useLanguage();
@@ -52,6 +51,33 @@ const BookingDemo: React.FC = () => {
   );
 };
 
+const EsportunityGallery: React.FC = () => {
+  const { t } = useLanguage();
+  const [active, setActive] = useState(0);
+  const shots = [
+    { src: '/esportunity/esportunity-feed.webp', label: t.portfolio.feed },
+    { src: '/esportunity/esportunity-opportunities.webp', label: t.portfolio.opportunities },
+    { src: '/esportunity/esportunity-chat.webp', label: t.portfolio.chat },
+  ];
+  const current = shots[active];
+  return (
+    <figure>
+      <a href={current.src} target="_blank" rel="noopener noreferrer" className="relative block aspect-[16/10] rounded-xl border border-border-light overflow-hidden" aria-label={`${t.portfolio.fullImage}: ${current.label}`}>
+        <Image src={current.src} alt={`eSportunity — ${current.label}`} fill sizes="(max-width: 1024px) 100vw, 50vw" style={{ objectFit: 'cover', objectPosition: 'top' }} />
+      </a>
+      <figcaption className="text-xs text-text-muted mt-3">{current.label}</figcaption>
+      <div className="flex gap-3 mt-4" role="group" aria-label={t.portfolio.gallery}>
+        {shots.map((shot, index) => (
+          <button key={shot.src} type="button" onClick={() => setActive(index)} aria-pressed={active === index} aria-label={`${t.portfolio.viewImage}: ${shot.label}`}
+            className={`rounded-md overflow-hidden border-2 ${active === index ? 'border-accent-sky-lt' : 'border-transparent'}`}>
+            <Image src={shot.src} alt="" width={96} height={60} className="object-cover" />
+          </button>
+        ))}
+      </div>
+    </figure>
+  );
+};
+
 const PortfolioSection: React.FC = () => {
   const { lang, t } = useLanguage();
   return (
@@ -65,44 +91,32 @@ const PortfolioSection: React.FC = () => {
             const end = experience?.end ?? project.end ?? null;
             const role = experience?.role[lang] ?? project.role?.[lang];
             const highlights = project.highlights?.[lang] ?? experience?.highlights[lang].slice(1, 3) ?? [];
-            const copy = (
-              <div>
-                <p className="text-accent-sky-lt text-xs font-medium mb-3">{project.status[lang]}</p>
-                <h3 className="text-2xl mb-2">{project.name}</h3>
-                <p className="text-text-muted text-sm mb-6">{role}{start && ` · ${formatPeriod(start, end, lang)}`}</p>
-                <h4 className="text-sm mb-2">{t.portfolio.challenge}</h4>
-                <p className="text-text-muted leading-relaxed mb-5">{project.challenge[lang]}</p>
-                <h4 className="text-sm mb-2">{t.portfolio.contribution}</h4>
-                <ul className="list-disc pl-5 space-y-3 text-sm text-text-muted leading-relaxed mb-5">
-                  {highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
-                </ul>
-                <p className="text-sm text-text-muted">{project.stack.join(' · ')}</p>
-              </div>
-            );
-
-            // eSportunity is a live demo: the walkthrough gets the full card width instead of the
-            // right column, which is the whole point of embedding it.
-            if (project.id === 'esportunity') {
-              return (
-                <article id={`project-${project.id}`} key={project.id} className="glass-card p-6 sm:p-8">
-                  <div className="mb-8">{copy}</div>
-                  <EsportunityStage />
-                </article>
-              );
-            }
-
             return (
               <article id={`project-${project.id}`} key={project.id} className="glass-card p-6 sm:p-8">
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-10">
                   <div>
-                    {copy}
+                    <p className="text-accent-sky-lt text-xs font-medium mb-3">{project.status[lang]}</p>
+                    <h3 className="text-2xl mb-2">{project.name}</h3>
+                    <p className="text-text-muted text-sm mb-6">{role}{start && ` · ${formatPeriod(start, end, lang)}`}</p>
+                    <h4 className="text-sm mb-2">{t.portfolio.challenge}</h4>
+                    <p className="text-text-muted leading-relaxed mb-5">{project.challenge[lang]}</p>
+                    <h4 className="text-sm mb-2">{t.portfolio.contribution}</h4>
+                    <ul className="list-disc pl-5 space-y-3 text-sm text-text-muted leading-relaxed mb-5">
+                      {highlights.map((highlight) => <li key={highlight}>{highlight}</li>)}
+                    </ul>
+                    <p className="text-sm text-text-muted mb-6">{project.stack.join(' · ')}</p>
                     {project.id === 'venetravel' && (
-                      <a href={project.url} target="_blank" rel="noopener noreferrer" className="btn-primary inline-block mt-6" id={`portfolio-${project.id}-site`}>
+                      <a href={project.url} target="_blank" rel="noopener noreferrer" className="btn-primary" id={`portfolio-${project.id}-site`}>
                         {t.portfolio.visit}
                       </a>
                     )}
+                    {project.id === 'esportunity' && (
+                      <a href="https://demo.margarita.travel/" target="_blank" rel="noopener noreferrer" className="btn-primary" id="portfolio-esportunity-demo">
+                        {t.portfolio.demo}
+                      </a>
+                    )}
                   </div>
-                  <div className="min-w-0"><BookingDemo /></div>
+                  <div className="min-w-0">{project.id === 'venetravel' ? <BookingDemo /> : <EsportunityGallery />}</div>
                 </div>
               </article>
             );
